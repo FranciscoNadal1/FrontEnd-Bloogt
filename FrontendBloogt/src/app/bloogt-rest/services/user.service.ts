@@ -11,6 +11,10 @@ export class UserService {
   private user: any = {
 
   };
+  private following: any = {
+
+  };
+
 
   constructor(private http: HttpClient) { }
 
@@ -20,4 +24,32 @@ export class UserService {
 
     return returnObject;
   }
+  
+  public getUserDetailsByUsername(username : string): Observable<any> {     
+    let url : string =  restURL.getUserDetailsByUsername;
+    let newstr = url.replace("[[username]]", username); 
+    
+    let returnObject = this.http.get(newstr);
+
+    return returnObject;
+  }
+
+  public getFollowingUsers(username : string): Observable<any> {     
+    let url : string =  restURL.getFollowingUsersByUsername;
+    let newstr = url.replace("[[username]]", username); 
+    
+    let returnObject = this.http.get(newstr);
+
+    return returnObject;
+  }
+
+  public getFollowedByUsers(username : string): Observable<any> {     
+    let url : string =  restURL.getFollowedByUsersByUsername;
+    let newstr = url.replace("[[username]]", username); 
+    
+    let returnObject = this.http.get(newstr);
+
+    return returnObject;
+  }
+
 }

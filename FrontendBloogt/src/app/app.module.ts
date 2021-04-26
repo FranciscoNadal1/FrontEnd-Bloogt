@@ -8,6 +8,10 @@ import { HttpClientModule } from "@angular/common/http";
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { PostDetailsComponent } from './Routes/post-details/post-details.component';
+import { PostListComponent } from './Routes/post-list/post-list.component';
+import { UserDetailsComponent } from './Routes/user-details/user-details.component';
+import { CutHtmlText } from './customPipes/cutHtmlText.pipe';
 
 
 
@@ -17,7 +21,11 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    PostDetailsComponent,
+    PostListComponent,
+    UserDetailsComponent,
+    CutHtmlText
   ],
   imports: [
     BrowserModule,

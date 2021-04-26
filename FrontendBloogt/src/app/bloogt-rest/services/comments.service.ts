@@ -7,22 +7,14 @@ import * as restURL from '../restURL';
 @Injectable({
   providedIn: 'root'
 })
-export class PostService {
-  private post: any = {
+export class CommentsService {
+  private comments: any = {
 
   };
-  
-
   constructor(private http: HttpClient) { }
 
-  public getAllPosts(): Observable<any> {      
-    let returnObject = this.http.get(restURL.getAllPosts);
-
-    return returnObject;
-  }
-
-  public getPostById(id : number): Observable<any> {     
-    let url : string =  restURL.getPostById;
+  public getCommentsById(id : number): Observable<any> {     
+    let url : string =  restURL.getCommentById;
     let newstr = url.replace("[[id]]", String(id)); 
     
     let returnObject = this.http.get(newstr);

@@ -1,0 +1,68 @@
+<div class="card">
+  <div class="card-header" [routerLink]="'/post/' + post.id">
+    {{post.title}}
+  </div>
+  <div class="card-body">
+
+    <div>
+      <div [className]="post.imagePost ? 'col-2 mt-3  image-post  pb-5 float-left' : 'col-0'" class="">
+        <img *ngIf="post.imagePost" class="img-thumbnail" [src]="post.imagePost">
+      </div>
+      <div [className]="post.imagePost ? 'col-10 postListPost float-right' : 'col-12 postListPost float-right'"
+        class="">
+        <div class="categoryPost  text-muted">
+          <a href="/post/fromCategory/2">{{post.category.name}}</a>
+        </div>
+
+        <div class="card-text" [innerHTML]="post.content"></div>
+      </div>
+    </div>
+  </div>
+  <div id="ReadMore" class="m-2">
+    <div>
+      <a class="btn btn-secondary btn-sm " [routerLink]="'/post/' + post.id">Read More...</a>
+
+      <div class="commentsAuthorDate">
+        <span> <img height="20%"
+            src="https://www.glyphicons.com/img/glyphicons/halflings/2x/glyphicons-halflings-134-chat-conversation@2x.png">
+        </span> <span class="commentsPost">{{post.commentaryCount}}</span> <span>
+          <img height="20%"
+            src="https://www.glyphicons.com/img/glyphicons/halflings/2x/glyphicons-halflings-1-user@2x.png">
+        </span> <span class="createdByPost"> <a [routerLink]="'/user/' + post.createdBy.username">{{post.createdBy.username}}</a>
+        </span> <span><img height="20%"
+            src="https://www.glyphicons.com/img/glyphicons/halflings/2x/glyphicons-halflings-21-calendar@2x.png"></span><span
+          class="createdAtPost">{{post.createdAt| date: 'dd/MM/yyyy'}}</span>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<div id="Comments">
+  <div class="border border-secondary rounded mb-4" *ngFor="let comment of comments">
+    <div class=" list-group-item card-text">
+      <span class="h6">{{ comment.message }}</span>
+    </div>
+    <div class="card-footer text-muted">
+      <span>Written by : </span><a [routerLink]="'/user/' + comment.createdBy.username">{{ comment.createdBy.username
+        }}</a>
+
+    </div>
+    <div>
+      <div class="card-footer text-muted">
+
+        <span>{{comment.createdAt| date: 'dd/MM/yyyy'}}</span>
+        <span class="float-right">
+
+          <div class="likeDislikesComment">
+            <span>0</span> <span> (0) votes</span>
+
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+
+
+</div>

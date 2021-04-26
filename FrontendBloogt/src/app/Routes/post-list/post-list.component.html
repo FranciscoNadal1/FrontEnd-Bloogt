@@ -1,0 +1,42 @@
+<div class="card" *ngFor="let item of post">
+  <div class="card-header" [routerLink]="'/post/' + item.id">
+    {{item.title}}
+  </div>
+  <div class="card-body">
+
+    <div>
+      <div [className]="item.imagePost ? 'col-2 mt-3  image-post  pb-5 float-left' : 'col-0'" class="">
+        <img *ngIf="item.imagePost" class="img-thumbnail" [src]="item.imagePost">
+      </div>
+      <div [className]="item.imagePost ? 'col-10 postListPost float-right' : 'col-12 postListPost float-right'"
+        class="">
+        <div class="categoryPost  text-muted">
+          <a href="/post/fromCategory/2">{{item.category.name}}</a>
+        </div>
+        
+        <div class="card-text" [innerHTML]="item.content | CutHTMLText:1000"></div>
+      </div>
+    </div>
+  </div>
+  <div id="ReadMore" class="m-2">
+    <div>
+      <a class="btn btn-secondary btn-sm " [routerLink]="'/post/' + item.id">Read More...</a>
+
+      <div class="commentsAuthorDate">
+        <span> <img height="20%"
+            src="https://www.glyphicons.com/img/glyphicons/halflings/2x/glyphicons-halflings-134-chat-conversation@2x.png">
+        </span> <span class="commentsPost">{{item.commentaryCount}}</span> <span>
+          <img height="20%"
+            src="https://www.glyphicons.com/img/glyphicons/halflings/2x/glyphicons-halflings-1-user@2x.png">
+        </span> <span class="createdByPost"> <a [routerLink]="'/user/' + item.createdBy.username" >{{item.createdBy.username}}</a>
+        </span> <span><img height="20%"
+            src="https://www.glyphicons.com/img/glyphicons/halflings/2x/glyphicons-halflings-21-calendar@2x.png"></span><span
+          class="createdAtPost">{{item.createdAt | date: 'dd/MM/yyyy'}}</span>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+

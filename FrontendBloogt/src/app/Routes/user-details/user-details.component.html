@@ -1,0 +1,23 @@
+<div class="card bg-light">
+    <div class="card-header">Profile</div>
+    <div class="card-body" >
+
+        <img *ngIf="user.avatar" [src]="user.avatar" alt="User avatar" class="img-thumbnail rounded float-left"
+            style="max-width: 25%;">
+        <img *ngIf="!user.avatar" src="https://i.pinimg.com/474x/5d/cf/02/5dcf02265a260bb0902c1ec504d1743b.jpg"
+            alt="User has no avatar" class="img-thumbnail rounded float-left" style="max-width: 25%;">
+
+        <ul class="list-group">
+
+            <li class="list-group-item">{{user.username}}</li>
+
+            <li *ngIf="user.name" class="list-group-item">{{user.name}}</li>
+            <li *ngIf="user.surname" class="list-group-item">{{user.surname}}</li>
+            <li *ngIf="user.email" class="list-group-item">{{user.email}}</li>
+
+            <li class="list-group-item">{{user.createdAt | date: 'dd/MM/yyyy'}}</li>
+            <div class="list-group-item"><span class="float-right">Following:{{userFollowing.length}}</span> <span class="float-left">Followers:{{userFollowed.length}}</span>
+            </div>
+        </ul>
+
+    </div>
