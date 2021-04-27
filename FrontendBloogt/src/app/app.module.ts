@@ -12,6 +12,8 @@ import { PostDetailsComponent } from './Routes/post-details/post-details.compone
 import { PostListComponent } from './Routes/post-list/post-list.component';
 import { UserDetailsComponent } from './Routes/user-details/user-details.component';
 import { CutHtmlText } from './customPipes/cutHtmlText.pipe';
+import { LoginRoutingModule } from './login/login-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -28,12 +30,15 @@ import { CutHtmlText } from './customPipes/cutHtmlText.pipe';
     CutHtmlText
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
+    LoginRoutingModule,
     HttpClientModule,
-    BloogtRestModule
+    BloogtRestModule,
+    ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent, HeaderComponent, FooterComponent,SidebarComponent]
+  bootstrap: [AppComponent, HeaderComponent, FooterComponent, SidebarComponent]
 })
 export class AppModule { }
