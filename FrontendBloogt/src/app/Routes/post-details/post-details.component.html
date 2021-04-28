@@ -28,7 +28,8 @@
         </span> <span class="commentsPost">{{post.commentaryCount}}</span> <span>
           <img height="20%"
             src="https://www.glyphicons.com/img/glyphicons/halflings/2x/glyphicons-halflings-1-user@2x.png">
-        </span> <span class="createdByPost"> <a [routerLink]="'/user/' + post.createdBy.username">{{post.createdBy.username}}</a>
+        </span> <span class="createdByPost"> <a
+            [routerLink]="'/user/' + post.createdBy.username">{{post.createdBy.username}}</a>
         </span> <span><img height="20%"
             src="https://www.glyphicons.com/img/glyphicons/halflings/2x/glyphicons-halflings-21-calendar@2x.png"></span><span
           class="createdAtPost">{{post.createdAt| date: 'dd/MM/yyyy'}}</span>
@@ -37,32 +38,48 @@
   </div>
 
 
-</div>
 
-<div id="Comments">
-  <div class="border border-secondary rounded mb-4" *ngFor="let comment of comments">
-    <div class=" list-group-item card-text">
-      <span class="h6">{{ comment.message }}</span>
-    </div>
-    <div class="card-footer text-muted">
-      <span>Written by : </span><a [routerLink]="'/user/' + comment.createdBy.username">{{ comment.createdBy.username
-        }}</a>
 
-    </div>
-    <div>
-      <div class="card-footer text-muted">
-
-        <span>{{comment.createdAt| date: 'dd/MM/yyyy'}}</span>
-        <span class="float-right">
-
-          <div class="likeDislikesComment">
-            <span>0</span> <span> (0) votes</span>
-
-          </div>
-        </span>
-      </div>
-    </div>
+  <div id="NewCommentTextArea">
+    <form *ngIf="userToken.isUserLogged()">
+      
+      <label for="comment">Add comment:</label>
+      <textarea #sendComment class="form-control mb-1" rows="5" id="comment" name="content"></textarea>
+      <input (click)="postComment(sendComment.value, 2, post.id)" class="btn btn-secondary btn-lg btn-block" type="submit" name="content" value="Send comment">
+    </form>
+    <div *ngIf="!userToken.isUserLogged()">You need to be logged in to post comments</div>
   </div>
 
+
+
+
+
+  <div id="Comments" class="form-group  border-top pt-3 pl-3 pr-3">
+    <div class="border border-secondary rounded mb-4" *ngFor="let comment of comments">
+      <div class=" list-group-item card-text">
+        <span class="h6">{{ comment.message }}</span>
+      </div>
+      <div class="card-footer text-muted">
+        <span>Written by : </span><a [routerLink]="'/user/' + comment.createdBy.username">{{ comment.createdBy.username
+          }}</a>
+
+      </div>
+      <div>
+        <div class="card-footer text-muted">
+
+          <span>{{comment.createdAt| date: 'dd/MM/yyyy'}}</span>
+          <span class="float-right">
+
+            <div class="likeDislikesComment">
+              <span>0</span> <span> (0) votes</span>
+
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
 
 </div>

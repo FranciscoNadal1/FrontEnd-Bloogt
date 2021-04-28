@@ -28,3 +28,9 @@ export const getAllHashtags = baseURL + "/api/hashtags/getAllHashtags";
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////                     COMMENTS
 export const getCommentById = baseURL + "/api/comments/getCommentByPostId/[[id]]";
+export const postComment = baseURL + "/api/comments/newComment";
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////                     LOGIN
+export const login = baseURL + "/api/login";

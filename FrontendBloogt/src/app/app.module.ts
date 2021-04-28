@@ -11,9 +11,11 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { PostDetailsComponent } from './Routes/post-details/post-details.component';
 import { PostListComponent } from './Routes/post-list/post-list.component';
 import { UserDetailsComponent } from './Routes/user-details/user-details.component';
+
 import { CutHtmlText } from './customPipes/cutHtmlText.pipe';
 import { LoginRoutingModule } from './login/login-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -36,7 +38,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginRoutingModule,
     HttpClientModule,
     BloogtRestModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent, HeaderComponent, FooterComponent, SidebarComponent]
