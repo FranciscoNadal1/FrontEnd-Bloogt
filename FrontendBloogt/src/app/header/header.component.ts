@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserTokenService} from '../login/service/user-token.service';
 import{ LoginComponent } from '../login/component/login/login.component';
+import { interval, Subscription, timer } from 'rxjs';
+import { TokenStorageService } from '../login/service/token-storage.service';
+import Swal from 'sweetalert2';
+import { UserService } from '../bloogt-rest/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -9,11 +13,26 @@ import{ LoginComponent } from '../login/component/login/login.component';
 })
 export class HeaderComponent implements OnInit {
 
+  public user: any = {   };
+  public username: string;
 
-  constructor(public userToken: UserTokenService) { }
+  constructor(public userToken: UserTokenService, public tokenService: TokenStorageService,private userservice: UserService) { }
 
   ngOnInit(): void {
 
+    if(this.tokenService.isTokenDefined){
+      this.username = this.userToken.getLoggedUser();
+      this.userservice.getUserDetailsByUsername(this.username).subscribe(user => (this.user = user));
+    }
+
+    const reloadInterval = 10000;
+    setInterval(()=> {
+      if(this.tokenService.isTokenDefined() === true){
+      if(this.tokenService.isTokenExpired() === true){
+        this.userToken.logoutUser();
+      }
+    }
+  }, reloadInterval);
   }
 
   goToLogin(){

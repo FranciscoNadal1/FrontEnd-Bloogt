@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnChanges } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PostDetailsComponent } from './Routes/post-details/post-details.component';
@@ -16,4 +16,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule   { 
+
+
+}

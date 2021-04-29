@@ -24,3 +24,13 @@
 #DivNavbar{
     padding-right:0px;
 }
+
+.avatarImageHeader{
+    border-radius: 50% !important;
+    height:75px;
+    width: 75px;
+}
+
+.buttonsSign li{
+    margin:5px;
+}

@@ -6,6 +6,7 @@ import { UserService } from "../../bloogt-rest/services/user.service";
 
 import { Subscription, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { PostService } from 'src/app/bloogt-rest/services/post.service';
 
 
 @Component({
@@ -19,13 +20,15 @@ export class UserDetailsComponent implements OnInit {
   statusText: string;
 
   public user: any = {   };
+  public postsOfUser: any = {   };
   public userFollowing: any = {   };
   public userFollowed: any = {   };
   public username: string;
 
   constructor(
     private route: ActivatedRoute, 
-    private userservice : UserService
+    private userservice: UserService,
+    private postservice: PostService
     ) { }
 
   ngOnInit(): void {
@@ -35,7 +38,15 @@ export class UserDetailsComponent implements OnInit {
 
 
     this.userservice.getUserDetailsByUsername(username).subscribe(user => (this.user = user));
-
+    this.postservice.getPostByUsername(username).subscribe(postsOfUser => (this.postsOfUser = postsOfUser));
+    
+/*
+    this.subscription = timer(0, 1000).pipe(
+      switchMap(() => this.postservice.getPostByUsername(username))
+    ).subscribe(postsOfUser => this.postsOfUser = postsOfUser);
+*/
+    
+/*
     this.subscription = timer(0, 1000).pipe(
       switchMap(() => this.userservice.getFollowingUsers(username))
     ).subscribe(userFollowing => this.userFollowing = userFollowing);
@@ -43,7 +54,7 @@ export class UserDetailsComponent implements OnInit {
     this.subscription = timer(0, 1000).pipe(
       switchMap(() => this.userservice.getFollowedByUsers(username))
     ).subscribe(userFollowed => this.userFollowed = userFollowed);
-    
+*/    
 
   //  this.userservice.getFollowingUsers(username).subscribe(userFollowing => (this.userFollowing = userFollowing));
  //   this.userservice.getFollowedByUsers(username).subscribe(userFollowed => (this.userFollowed = userFollowed));

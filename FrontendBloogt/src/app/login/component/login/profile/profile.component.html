@@ -1,0 +1,54 @@
+<div class="twPc-div">
+    <a class="twPc-bg twPc-block"></a>
+
+	<div>
+
+        
+
+		<a title="{{user.username}}" [routerLink]="'/user/' + user.username" class="twPc-avatarLink">
+<!--
+			<img alt="{{user.username}}" src="https://mertskaplan.com/wp-content/plugins/msk-twprofilecard/img/mertskaplan.jpg" class="twPc-avatarImg">
+-->
+			<img *ngIf="!user.avatar" src="https://i.pinimg.com/474x/5d/cf/02/5dcf02265a260bb0902c1ec504d1743b.jpg" class="avatarProfilePopup" alt="">
+            <img *ngIf="user.avatar" [src]="user.avatar" class="avatarProfilePopup" alt="">
+		</a>
+
+		<div class="twPc-divUser">
+			<div class="twPc-divName">
+				<a [routerLink]="'/user/' + user.name">{{ user.name }} {{ user.surname }}</a>
+			</div>
+			<span>
+				<a [routerLink]="'/user/' + user.username"><span>{{user.username}}</span></a>
+			</span>
+		</div>
+
+		<div class="twPc-divStats">
+			<ul class="twPc-Arrange">
+				<li class="twPc-ArrangeSizeFit">
+					<a [routerLink]="'/user/' + user.username" title="{{ user.writtenPosts }}">
+						<span class="twPc-StatLabel twPc-block">Posts</span>
+						<span class="twPc-StatValue">{{ user.writtenPosts }}</span>
+					</a>
+				</li>
+                <li class="twPc-ArrangeSizeFit">
+					<a [routerLink]="'/user/' + user.username" title="{{ user.writtenComments }}">
+						<span class="twPc-StatLabel twPc-block">Comments</span>
+						<span class="twPc-StatValue">{{ user.writtenComments }}</span>
+					</a>
+				</li>
+				<li class="twPc-ArrangeSizeFit">
+					<a [routerLink]="'/user/' + user.username + '/following'" title="{{ userFollowed?.length }}">
+						<span class="twPc-StatLabel twPc-block">Following</span>
+						<span class="twPc-StatValue">{{ userFollowed?.length }}</span>
+					</a>
+				</li>
+				<li class="twPc-ArrangeSizeFit">
+					<a [routerLink]="'/user/' + user.username + '/followers'"  title="{{ userFollowing?.length }}">
+						<span class="twPc-StatLabel twPc-block">Followers</span>
+						<span class="twPc-StatValue">{{ userFollowing?.length }}</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

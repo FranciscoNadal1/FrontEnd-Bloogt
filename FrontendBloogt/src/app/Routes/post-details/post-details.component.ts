@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
 
-import { PostService } from "../../bloogt-rest/services/post.service";
-import { CommentsService } from "../../bloogt-rest/services/comments.service";
+import { PostService } from '../../bloogt-rest/services/post.service';
+import { CommentsService } from '../../bloogt-rest/services/comments.service';
 import { UserTokenService } from 'src/app/login/service/user-token.service';
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-post-details',
@@ -16,48 +18,114 @@ export class PostDetailsComponent implements OnInit {
   public comments: any = {   };
   public id: number;
 
+  textAreaNewComment: string = '';
+
   constructor(
+    @Inject(DOCUMENT) private document: Document,
     public userToken: UserTokenService,
     private route: ActivatedRoute,
     private postservice: PostService,
     private commentservice: CommentsService
-
-    ) { }
+    ) {    }
 
   ngOnInit() {
+    this.getPostInfo();
+    this.getComments();
+    this.commentservice.sortComments(this.comments, "older");
+  }
 
+  sortComments(sortType){
+    this.commentservice.sortComments(this.comments, sortType);
+    }
+    /*
+  sortCommentByOld(){
+    this.commentservice.sortComments(this.comments, "older");
+  }
+  sortCommentByBest(){
+    this.commentservice.sortComments(this.comments, "best");
+  }
+  sortCommentByWorst(){
+    this.commentservice.sortComments(this.comments, "worst");
+  }
+  */
+  cleanTextAreaComments() {
+    this.textAreaNewComment = '';
+  }
+
+  getPostInfo(): void{ 
     let id = this.route.snapshot.params.id;
     this.postservice.getPostById(id).subscribe(post => (this.post = post));
+  }
+  getComments(): void{
+    let id = this.route.snapshot.params.id;
     this.commentservice.getCommentsById(id).subscribe(comments => (this.comments = comments));
   }
 
-  postComment(message, user, postId){
-    console.log(postId);
-    
+  refreshPage() {
+    this.document.defaultView.location.reload();
+  }
+
+  thumbUpComment(id){
+    this.commentservice.likeComment(id).subscribe(() => {
+        this.comments.forEach(element => {
+        if(element.id === id){
+          element.positiveReactions++;
+          element.totalReactions = element.totalReactions + 1;
+        }
+    } );
+    },
+    (error) => {
+      console.log(error);
+    });
+  }
+  thumbDownComment(id){
+    this.commentservice.dislikeComment(id).subscribe(() => {
+      this.comments.forEach(element => {
+      if(element.id === id){
+        element.negativeReactions++
+        element.totalReactions = element.totalReactions + 1;
+      }
+    } );
+  },
+  (error) => {
+    console.log(error);
+  });
+
+
+  
+  //  console.log(this.comments);
+   // this.commentservice.dislikeComment(id).subscribe();
+   // this.getComments();
+  }  
+  postComment(message,  postId){
     var message: any = message;
-    var userIdN: number = user;
     var postIdN: number = +postId;
-    
-    this.commentservice.postComment(message, userIdN, postIdN).subscribe(
+
+    this.commentservice.postComment(message, postIdN).subscribe(
       res => {
         if(res.status === 'OK'){
 
+          this.getComments();
+          this.getPostInfo();
+
           Swal.fire({
-            position: 'top-end',
+            title: 'Comment added!',
+            html: 'Your message :<br>'+message+' <br><br>Was added successfully',
             icon: 'success',
-            title: 'Your comment was published',
             showConfirmButton: false,
-            timer: 500
-          })
-          window.location.reload();
+            timer: 1200
+          });
+          this.cleanTextAreaComments();
+          //scrollToTop();
+          //window.location.reload();
         }else{
           Swal.fire({
             position: 'top-end',
-            icon: 'success',
-            title: 'Your comment was published',
+            icon: 'error',
+            title: 'Your comment was not published',
             showConfirmButton: false,
-            timer: 500
-          })
+            timer: 1200
+          });
 
 
         }

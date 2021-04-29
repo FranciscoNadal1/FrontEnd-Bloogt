@@ -17,4 +17,18 @@ export class LoginServiceService {
     return this.http.post<any>(restURL.login, data);
 }
 
+createUser(name: string, username: string, avatar: string, password: string, surname: string, email: string): Observable<any> {
+
+  const data = {
+    "name": name,
+    "username": username,
+    "avatar": avatar,
+    "password": password,
+    "surname": surname,
+    "email": email
+  };
+  console.log(data);
+  return this.http.post<any>(restURL.registerUser, data);
+}
+
 }

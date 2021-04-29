@@ -19,6 +19,7 @@ export interface JwtPayload {
 @Injectable({
   providedIn: 'root'
 })
+
 export class TokenStorageService {
 
   constructor() { }
@@ -41,7 +42,15 @@ export class TokenStorageService {
  //   return window.sessionStorage.getItem(TOKEN_KEY);
     return localStorage.getItem(TOKEN_KEY);
   }
+  public isTokenExpired(): boolean{
+    let decodedToken : JwtPayload = jwt_decode<JwtPayload>(this.getToken());
+    let current_time = Date.now() / 1000;
 
+    if(decodedToken.exp < current_time){
+      return true;
+    }
+    return false;
+  }
   public getDecodedToken(): JwtPayload {
     let current_time = Date.now() / 1000;
     let decodedToken : JwtPayload;

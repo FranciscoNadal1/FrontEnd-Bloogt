@@ -1,14 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div id="DivNavbar" class="container-fluid">
     <a class="navbar-brand" href="#">
-      
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png" height="50px"/>
+
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png"
+        height="50px" />
 
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
@@ -18,7 +21,8 @@
           <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
             Dropdown
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -34,40 +38,56 @@
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        
       </form>
 
+      <ul *ngIf="!userToken.isUserLogged()" class="nav navbar-nav navbar-right buttonsSign">
+          <li class="btn btn-primary btn-lg">
+           <a [routerLink]="'/registration'"> Sign up </a>
+          </li>
 
-
-
-      <ul *ngIf="!userToken.isUserLogged()" class="nav navbar-nav navbar-right ">
-        <!--
-        <li><p class="navbar-text">Already have an account?</p></li>
--->
-        <li class="dropdown ">
-          <a href="#" class="dropdown-toggle navbar-text" data-toggle="dropdown">            
-            <div *ngIf="!userToken.isUserLogged()" class="btn btn-primary btn-lg">Sign in <span class="caret"></span></div>
-         <!--   <b>Login</b> <span class="caret"></span> -->
-          </a>
+          <li class="dropdown ">
+            <span class="btn btn-primary btn-lg" data-toggle="dropdown">
+              Sign in <span class="caret"></span>
+            </span>
             <ul id="login-dp" class="dropdown-menu dropdown-menu-right">
               <li>
                 <div class="row">
-                    <div class="col-md-12">                      
-                        <app-login></app-login>
-                    </div>
+                  <div class="col-md-12">
+                    <app-login></app-login>
+                  </div>
                 </div>
               </li>
             </ul>
+          </li>
+      </ul>
+      <ul *ngIf="userToken.isUserLogged()" class="nav navbar-nav navbar-right ">
+        <li class="dropdown ">
+          <span class="btn btn-secondary btn-lg" data-toggle="dropdown">
+            Logged as : {{ userToken.getLoggedUser() }} <span class="caret"></span>
+          </span>
+          <ul id="login-dp" class="dropdown-menu dropdown-menu-right">
+            <li>
+              <div class="row">
+                <div class="col-md-12">
+                  <app-profile></app-profile>
+
+                  <button *ngIf="userToken.isUserLogged()" class="btn btn-secondary btn-lg btn-block"
+                    (click)="logout()">Logout</button>
+                </div>
+              </div>
+            </li>
+          </ul>
         </li>
       </ul>
-
-
-      <div id="loginHeader">
-        <button *ngIf="userToken.isUserLogged()" class="btn btn-primary btn-lg" (click)="logout()">Logout</button>
-        
-
+      <div *ngIf="userToken.isUserLogged()">
+        <img *ngIf="!user.avatar" src="https://i.pinimg.com/474x/5d/cf/02/5dcf02265a260bb0902c1ec504d1743b.jpg"
+          class="avatarImageHeader" alt="">
+        <img *ngIf="user.avatar" [src]="user.avatar" class="avatarImageHeader" alt="">
       </div>
+      <div id="loginHeader">
+      </div>
+
+
     </div>
   </div>
-  </nav>
-  
+</nav>
