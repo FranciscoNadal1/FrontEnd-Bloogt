@@ -15,11 +15,17 @@ export const getUserDetailsByUsername = baseURL + "/api/user/getUserByUsername/[
 export const getFollowingUsersByUsername = baseURL + "/api/follows/[[username]]/following";
 export const getFollowedByUsersByUsername = baseURL + "/api/follows/[[username]]/followedBy";
 export const registerUser = baseURL + "/api/user/newUser";
+export const getReactionsOfPost = baseURL + "/api/reaction/post/user";
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////                     POST
-export const getAllPosts = baseURL + "/api/posts/getAllPosts";
-export const getPostById = baseURL + "/api/posts/getPostById/[[id]]";
+export const getAllPosts = baseURL + "/api/posts/getAll";
+export const getAllQuickPosts = baseURL + "/api/posts/getAll/category/name/QuickPost";
+export const getAllQuickPostsOfFollowing = baseURL + "/api/posts/getAll/following/category/name/QuickPost?includeSelf=true";
+export const getPostById = baseURL + "/api/posts/getById/[[id]]";
 export const getPostByUsername = baseURL + "/api/user/getPostsByUsername/[[username]]";
+export const createNewPost = baseURL + "/api/posts/new";
+export const likePostById = baseURL + "/api/reaction/post/[[id]]/like";
+export const dislikePostById = baseURL + "/api/reaction/post/[[id]]/dislike";
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////                     CATEGORY
 export const getAllCategories = baseURL + "/api/category/getAllCategories";

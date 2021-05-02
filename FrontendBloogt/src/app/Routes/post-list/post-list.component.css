@@ -1,0 +1,44 @@
+.gedf-main {
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+.gedf-card {
+    margin-bottom: 2.77rem;
+}
+
+.card-footer > .btn {
+    float: left;
+    margin-right: 8px;
+}
+.card-footer {
+    font-size: 14px;
+    font-weight: 700;
+    min-height: 54px;
+}
+.card-footer {
+    background-color: rgb(255, 255, 255);
+    border-width: 0px; 
+}
+.card-footer .input-placeholder {
+    display: block;
+    margin-left: 198px;
+    color: rgb(153, 153, 153);
+    font-size: 12px;
+    font-weight: 400;
+    padding: 8px 6px 7px;
+    border: 1px solid rgb(217, 217, 217);
+    border-radius: 2px;
+    box-shadow: rgb(0 0 0 / 5%) 0px 1px 0px 0px;
+}
+
+.card-footer .glyphicon{
+    font-size: 20px;
+}
+
+
+.LikedPost{
+    background-color:green !important;
+}
+.DislikedPost{
+    background-color:red !important;
+}

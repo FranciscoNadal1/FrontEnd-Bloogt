@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { OnChanges } from '@angular/core';
+import { TimeAgo } from './customPipes/timeAgo.pipe';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -70,7 +71,8 @@ const customNotifierOptions: NotifierOptions = {
     PostDetailsComponent,
     PostListComponent,
     UserDetailsComponent,
-    CutHtmlText
+    CutHtmlText,
+    TimeAgo
   ],
   imports: [
     FormsModule,

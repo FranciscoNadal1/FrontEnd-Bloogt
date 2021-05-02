@@ -60,9 +60,6 @@ export class CommentsService {
       })
 
     );
-
-
-
   }
   public dislikeComment(id: number): Observable<any> {
     let headers = new HttpHeaders({
@@ -86,6 +83,7 @@ export class CommentsService {
       })
     );
   }
+
   public sortComments(comments, sortMethod : string) {
     if(sortMethod === "older"){
       comments.sort(function (a, b) {

@@ -37,17 +37,7 @@ export class PostDetailsComponent implements OnInit {
   sortComments(sortType){
     this.commentservice.sortComments(this.comments, sortType);
     }
-    /*
-  sortCommentByOld(){
-    this.commentservice.sortComments(this.comments, "older");
-  }
-  sortCommentByBest(){
-    this.commentservice.sortComments(this.comments, "best");
-  }
-  sortCommentByWorst(){
-    this.commentservice.sortComments(this.comments, "worst");
-  }
-  */
+
   cleanTextAreaComments() {
     this.textAreaNewComment = '';
   }
