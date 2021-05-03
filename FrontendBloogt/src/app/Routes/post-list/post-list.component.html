@@ -62,7 +62,7 @@
         
                 </div>
                 <div class="ml-2">
-                    <div class="h5 m-0">@{{item.createdBy.username}}</div>
+                    <div class="h5 m-0"><a [routerLink]="'/user/' + item.createdBy.username">@{{item.createdBy.username}}</a></div>
                     <div class="h7 text-muted">{{item.createdBy.name}} {{item.createdBy.surname}}</div>
                 </div>
             </div>

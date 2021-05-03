@@ -15,6 +15,15 @@ export class CommentsService {
   };
   constructor(private http: HttpClient, private tokenStorage: TokenStorageService) { }
 
+  public getAllCommentsOfUsername(username: string): Observable<any> {
+
+    let url: string = restURL.getAllCommentsOfUser;
+    let newstr = url.replace("[[username]]", String(username));
+console.log(newstr);
+    let returnObject = this.http.get(newstr);
+
+    return returnObject;
+  }
   public getCommentsById(id: number): Observable<any> {
     let url: string = restURL.getCommentById;
     let newstr = url.replace("[[id]]", String(id));

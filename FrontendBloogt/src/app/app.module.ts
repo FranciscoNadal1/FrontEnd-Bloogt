@@ -19,6 +19,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { OnChanges } from '@angular/core';
 import { TimeAgo } from './customPipes/timeAgo.pipe';
+import { PostUserListComponent } from './Routes/user-details/post-user-list/post-user-list.component';
+import { CommentUserListComponent } from './Routes/user-details/comment-user-list/comment-user-list.component';
+import { FollowersComponent } from './Routes/user-details/Follow/followers/followers.component';
+import { FollowingComponent } from './Routes/user-details/Follow/following/following.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -72,7 +76,11 @@ const customNotifierOptions: NotifierOptions = {
     PostListComponent,
     UserDetailsComponent,
     CutHtmlText,
-    TimeAgo
+    TimeAgo,
+    PostUserListComponent,
+    CommentUserListComponent,
+    FollowersComponent,
+    FollowingComponent
   ],
   imports: [
     FormsModule,

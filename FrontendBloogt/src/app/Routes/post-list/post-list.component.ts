@@ -108,7 +108,7 @@ export class PostListComponent implements OnInit {
 
   }
 
-  thumbUpPost(id) {
+  thumbUpPost(id: number) {
     this.getReactionsOfPosts();
 
     this.postservice.likePost(id).subscribe(() => {
@@ -116,8 +116,8 @@ export class PostListComponent implements OnInit {
         if (element.id === id) {
           element.positiveReactions++;
           
-          if(!this.mapPostReactions.get(id) || !this.mapPostReactions.get(id) === null)
-          element.negativeReactions--;
+            if(this.mapPostReactions.get(Number(id)) === false)
+              element.negativeReactions--;
           
       this.getReactionsOfPosts();
         }
@@ -136,8 +136,8 @@ export class PostListComponent implements OnInit {
         if (element.id === id) {
           element.negativeReactions++;
 
-          if(!this.mapPostReactions.get(id) || !this.mapPostReactions.get(id) === null)
-            element.positiveReactions--;
+            if(this.mapPostReactions.get(Number(id)) === true)
+              element.positiveReactions--;
             
       this.getReactionsOfPosts();
         }

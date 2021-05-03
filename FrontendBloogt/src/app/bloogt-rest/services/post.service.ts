@@ -43,7 +43,7 @@ export class PostService {
     return returnObject;
   }
 
-  
+
   public getReactionsOfPost(): Observable<JSON> {
 
     let headers = new HttpHeaders({
@@ -66,7 +66,7 @@ export class PostService {
     return returnObject;
   }
 
-  public getPostByUsername(username: number): Observable<any> {
+  public getPostByUsername(username: string): Observable<any> {
     let url : string =  restURL.getPostByUsername;
     let newstr = url.replace("[[username]]", String(username));
     

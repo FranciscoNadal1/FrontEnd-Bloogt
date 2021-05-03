@@ -46,14 +46,61 @@
 				</div>
 				<!-- END SIDEBAR USER TITLE -->
 				<!-- SIDEBAR BUTTONS -->
-				<div class="profile-userbuttons">
-					<button type="button" class="btn btn-success btn-sm">Follow</button>
-					<button type="button" class="btn btn-danger btn-sm">Message</button>
+				<div *ngIf="!getLoggedUsername()" class="profile-userbuttons">
+					<button (click)="followUser()" type="button" class="btn btn-success btn-sm">Follow</button>
+					<button type="button" class="btn btn-danger btn-sm">
+						<i class="glyphicon glyphicon-envelope"></i></button>
 				</div>
 				<!-- END SIDEBAR BUTTONS -->
 				<!-- SIDEBAR MENU -->
 				<div class="profile-usermenu">
 					<ul class="nav">
+						Posts
+						<li [className]="getMenuItem() === 'postList' ? 'active' : 'inactive'">
+							<a [routerLink]="'/user/' + username + '/postList'">
+							<i class="glyphicon glyphicon-th-list"></i>
+							Posts </a>
+						</li>
+						<li [className]="getMenuItem() === 'postsLiked' ? 'active' : 'inactive'">
+							<a [routerLink]="'/user/' + username + '/postsLiked'">
+							<i class="glyphicon glyphicon-thumbs-up"></i>
+							Liked  </a>
+						</li>
+						<li [className]="getMenuItem() === 'postsDisliked' ? 'active' : 'inactive'">
+							<a [routerLink]="'/user/' + username + '/postsDisliked'">
+							<i class="glyphicon glyphicon-thumbs-down"></i>
+							Disliked  </a>
+						</li>	
+						
+						Comments					
+						<li [className]="getMenuItem() === 'commentList' ? 'active' : 'inactive'"> 
+							<a  [routerLink]="'/user/' + username + '/commentList'">
+							<i class="glyphicon glyphicon-comment"></i>
+							Comments </a>
+						</li>
+						<li  [className]="getMenuItem() === 'commentsLiked' ? 'active' : 'inactive'">
+							<a [routerLink]="'/user/' + username + '/commentsLiked'">
+							<i class="glyphicon glyphicon-thumbs-up"></i>
+							Liked  </a>
+						</li>
+						<li  [className]="getMenuItem() === 'commentsDisliked' ? 'active' : 'inactive'">
+							<a [routerLink]="'/user/' + username + '/commentsDisliked'">
+							<i class="glyphicon glyphicon-thumbs-down"></i>
+							Disliked  </a>
+						</li>	
+						Follow					
+						<li [className]="getMenuItem() === 'following' ? 'active' : 'inactive'"> 
+							<a  [routerLink]="'/user/' + username + '/following'">
+							<i class="glyphicon glyphicon-user"></i>
+							Following </a>
+						</li>			
+						<li [className]="getMenuItem() === 'followers' ? 'active' : 'inactive'"> 
+							<a  [routerLink]="'/user/' + username + '/followers'">
+							<i class="glyphicon glyphicon-user"></i>
+							Followers </a>
+						</li>
+
+						Settings
 						<li class="active">
 							<a href="#">
 							<i class="glyphicon glyphicon-home"></i>
@@ -79,12 +126,20 @@
 				<!-- END MENU -->
 			</div>
 		</div>
+		
 		<div class="col-md-9">
-            <div class="profile-content">
-				<div class="card" *ngFor="let post of postsOfUser.posts">
-					{{ post.title }}
-				</div>
-            </div>
+			<app-post-user-list *ngIf="getMenuItem() === 'postList'"></app-post-user-list>
+			<app-post-user-list *ngIf="getMenuItem() === 'postsLiked'"></app-post-user-list>
+			<app-post-user-list *ngIf="getMenuItem() === 'postsDisliked'"></app-post-user-list>
+
+			<app-comment-user-list *ngIf="getMenuItem() === 'commentList'"></app-comment-user-list>
+			<app-comment-user-list *ngIf="getMenuItem() === 'commentsLiked'"></app-comment-user-list>
+			<app-comment-user-list *ngIf="getMenuItem() === 'commentsDisliked'"></app-comment-user-list>
+
+			
+			<app-following *ngIf="getMenuItem() === 'following'"></app-following>
+			<app-followers *ngIf="getMenuItem() === 'followers'"></app-followers>
 		</div>
+
 	</div>
 </div>

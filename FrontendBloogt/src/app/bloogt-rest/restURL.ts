@@ -16,6 +16,8 @@ export const getFollowingUsersByUsername = baseURL + "/api/follows/[[username]]/
 export const getFollowedByUsersByUsername = baseURL + "/api/follows/[[username]]/followedBy";
 export const registerUser = baseURL + "/api/user/newUser";
 export const getReactionsOfPost = baseURL + "/api/reaction/post/user";
+export const followUser = baseURL + "/api/follows/follow/[[username]]";
+export const unfollowUser = baseURL + "/api/follows/unfollow/[[username]]";
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////                     POST
 export const getAllPosts = baseURL + "/api/posts/getAll";
@@ -35,6 +37,7 @@ export const getAllHashtags = baseURL + "/api/hashtags/getAllHashtags";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////                     COMMENTS
+export const getAllCommentsOfUser = baseURL + "/api/user/getCommentsByUsername/[[username]]";
 export const getCommentById = baseURL + "/api/comments/getCommentByPostId/[[id]]";
 export const postComment = baseURL + "/api/comments/newComment";
 export const dislikeCommentById = baseURL + "/api/reaction/comment/[[id]]/dislike";
