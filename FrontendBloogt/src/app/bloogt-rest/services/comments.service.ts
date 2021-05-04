@@ -142,4 +142,16 @@ console.log(newstr);
     
     return comments;
   }
+
+  public commentReactionsUser(username: string, reaction: string): Observable<any> {
+
+    let url: string = restURL.getCommentReactionsOfUser;
+    let newstr = url.replace("[[username]]", String(username));
+     newstr = newstr.replace("[[reaction]]", String(reaction));
+
+
+     let returnObject = this.http.get(newstr);
+     
+    return returnObject;
+  }
 }

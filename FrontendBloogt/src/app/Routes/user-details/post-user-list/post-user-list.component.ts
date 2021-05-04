@@ -22,7 +22,22 @@ export class PostUserListComponent implements OnInit {
   ngOnInit(): void {
 
     this.username = this.route.snapshot.params.username;
-    this.postservice.getPostByUsername(this.username).subscribe(postsOfUser => (this.postsOfUser = postsOfUser));
+    if(this.getMenuItem() === 'postList')
+      this.postservice.getPostByUsername(this.username).subscribe(postsOfUser => (this.postsOfUser = postsOfUser));
+      
+    if(this.getMenuItem() === 'postsLiked'){
+      this.postservice.postReactionsUser(this.username, 'true').subscribe(postsOfUser => (this.postsOfUser = postsOfUser));
+    }
+    if(this.getMenuItem() === 'postsDisliked'){
+      this.postservice.postReactionsUser(this.username, 'false').subscribe(postsOfUser => (this.postsOfUser = postsOfUser));
+    }
+    console.log(this.postservice)
   }
 
+  getMenuItem(): string{
+    let menuItem = this.route.snapshot.params.menu;
+    if(menuItem === undefined)
+      return "postList";
+    return menuItem;
+  }
 }

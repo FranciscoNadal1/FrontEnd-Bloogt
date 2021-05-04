@@ -1,26 +1,43 @@
-<div class="comment-list" *ngFor="let comment of commentsOfUser.comments">
+<div *ngIf="getMenuItem() === 'commentList'" class="profile-content">
+  <div class="comment-list" *ngFor="let comment of commentsOfUser.comments">
+      <div *ngIf="comment; let item">
+          <ng-container *ngTemplateOutlet="showPosts ; context: {$implicit: item}"></ng-container>
+        </div>
+  </div>
+</div>
 
+<div *ngIf="getMenuItem() === 'commentsLiked' || getMenuItem() === 'commentsDisliked'" class="profile-content">
+  <div class="comment-list" *ngFor="let comment of commentsOfUser">
+      <div *ngIf="comment.comments; let item">
+        <ng-container *ngTemplateOutlet="showPosts ; context: {$implicit: item}"></ng-container>  
+      </div>
+  </div>
+</div>
+
+
+  <ng-template let-item #showPosts >
     <div class="comment">
 
       <div class="comment-avatar col-1 float-left">
-        <img *ngIf="!comment.createdBy.avatar"
+        <img *ngIf="!item.createdBy.avatar"
           src="https://i.pinimg.com/474x/5d/cf/02/5dcf02265a260bb0902c1ec504d1743b.jpg" class="img-responsive" alt="">
-        <img *ngIf="comment.createdBy.avatar" [src]="comment.createdBy.avatar" class="img-responsive" alt="">
+        <img *ngIf="item.createdBy.avatar" [src]="item.createdBy.avatar" class="img-responsive" alt="">
       </div>
 
 
       <div class="media-body col-11">
         <div class="well well-lg comment-header">
           <div>
-            <div class="col-6 text-uppercase float-left username"><span>{{ comment.createdBy.username }}</span></div>
-            <div class="col-6  float-right date"><span>{{comment.createdAt| date: 'dd/MM/yyyy'}}</span></div>
+            <div class="col-6 text-uppercase float-left username"><span><a [routerLink]="'/user/' + item.createdBy.username">{{ item.createdBy.username }}</a></span></div>
+            <div class="col-6  float-right date"><span>{{item.createdAt| date: 'dd/MM/yyyy'}}</span></div>
           </div>
 
         </div>
 
         <div class="well well-lg comment-text">      
-          
-          {{ comment.message }}
+          <a [routerLink]="'/post/' + item.postId">
+          {{ item.message }}
+        </a>
         </div>
 
         <div class=" buttons">
@@ -34,7 +51,7 @@
         -->
           <div class="col-5 float-right">
             <div class="col-7 float-right votes-number">
-              ({{ comment.positiveReactions - comment.negativeReactions }}) {{ comment.totalReactions }} votes
+              ({{ item.positiveReactions - item.negativeReactions }}) {{ item.totalReactions }} votes
 
 
             </div>
@@ -44,4 +61,4 @@
 
       </div>
     </div>
-  </div>
+  </ng-template>

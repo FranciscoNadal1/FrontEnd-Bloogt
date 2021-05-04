@@ -28,6 +28,8 @@ export const getPostByUsername = baseURL + "/api/user/getPostsByUsername/[[usern
 export const createNewPost = baseURL + "/api/posts/new";
 export const likePostById = baseURL + "/api/reaction/post/[[id]]/like";
 export const dislikePostById = baseURL + "/api/reaction/post/[[id]]/dislike";
+
+export const getPostReactionsOfUser = baseURL + "/api/reaction/posts/user/[[username]]?reaction=[[reaction]]";
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////                     CATEGORY
 export const getAllCategories = baseURL + "/api/category/getAllCategories";
@@ -42,6 +44,8 @@ export const getCommentById = baseURL + "/api/comments/getCommentByPostId/[[id]]
 export const postComment = baseURL + "/api/comments/newComment";
 export const dislikeCommentById = baseURL + "/api/reaction/comment/[[id]]/dislike";
 export const likeCommentById = baseURL + "/api/reaction/comment/[[id]]/like";
+
+export const getCommentReactionsOfUser = baseURL + "/api/reaction/comments/user/[[username]]?reaction=[[reaction]]";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////                     LOGIN

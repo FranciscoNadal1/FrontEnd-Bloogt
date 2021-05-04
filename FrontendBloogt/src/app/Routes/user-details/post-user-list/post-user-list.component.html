@@ -1,5 +1,79 @@
-  <div class="profile-content">
-        <div class="card" *ngFor="let post of postsOfUser.posts">
-            {{ post.title }}
+<div *ngIf="getMenuItem() === 'postList'" class="profile-content">
+    <div *ngIf="postsOfUser.posts; let foreach">
+    <div class="card" *ngFor="let post of foreach">
+        <div *ngIf="post; let item">
+            <ng-container *ngTemplateOutlet="showPosts ; context: {$implicit: item}"></ng-container>
+         </div>
+    </div>
+</div>
+</div>
+
+<div *ngIf="getMenuItem() === 'postsLiked' || getMenuItem() === 'postsDisliked'" class="profile-content">
+    <div *ngIf="postsOfUser; let foreach">
+        <div class="card" *ngFor="let post of foreach">
+            <div *ngIf="post.posts; let item">
+                <ng-container *ngTemplateOutlet="showPosts ; context: {$implicit: item}"></ng-container>
+            </div>
+        </div>
+    </div>    
+</div>
+
+
+
+<ng-template let-item #showPosts >
+    <div class="card gedf-card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="mr-2">
+                        <img width="45" *ngIf="!item.createdBy.avatar"
+                            src="https://i.pinimg.com/474x/5d/cf/02/5dcf02265a260bb0902c1ec504d1743b.jpg"
+                            class="rounded-circle" alt="">
+                        <img width="45" *ngIf="item.createdBy.avatar" [src]="item.createdBy.avatar"
+                            class="rounded-circle" alt="">
+
+                    </div>
+                    <div class="ml-2">
+                        <div class="h5 m-0"><a
+                                [routerLink]="'/user/' + item.createdBy.username">@{{item.createdBy.username}}</a>
+                        </div>
+                        <div class="h7 text-muted">{{item.createdBy.name}} {{item.createdBy.surname}}</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="dropdown">
+                        <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-body">
+            <div class="text-muted h7 mb-2"> <i class="glyphicon glyphicon-hourglass"></i><span> Reacted
+                    {{item.createdAt | GetTimeAgoOfDate}}</span></div>
+            <a class="card-link" href="#">
+                <!--
+        <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adip.</h5>
+        -->
+            </a>
+
+            <p class="card-text" [innerHTML]="item.content | CutHTMLText:1000">
+
+            </p>
+            <a class="" [routerLink]="'/post/' + item.id">Read More...</a>
+        </div>
+        <div class="card-footer">
+
+            <i class="glyphicon glyphicon glyphicon-thumbs-up"></i>
+
+            <span>{{item.positiveReactions}}</span>
+            <i class="glyphicon glyphicon glyphicon-thumbs-down"></i>
+            <span>{{item.negativeReactions}}</span>
+
         </div>
     </div>
+</ng-template>
+

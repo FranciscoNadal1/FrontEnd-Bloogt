@@ -10,10 +10,10 @@
                 <img width="75px" height="75px" *ngIf="!user.avatar"
                     src="https://i.pinimg.com/474x/5d/cf/02/5dcf02265a260bb0902c1ec504d1743b.jpg" class="img-responsive"
                     alt="">
-                <img width="75px" height="75px" *ngIf="user.avatar" [src]="comment.createdBy.avatar"
+                <img width="75px" height="75px" *ngIf="user.avatar" [src]="user.avatar"
                     class="img-responsive" alt="">
             </td>
-            <td>{{ user.username }}</td>
+            <td><a [routerLink]="'/user/' + user.username">{{ user.username }}</a></td>
         </tr>
     </div>
 </table>

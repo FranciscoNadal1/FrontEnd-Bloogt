@@ -140,4 +140,29 @@ export class PostService {
 
     );
   }
+
+  public postReactionsUser(username: string, reaction: string): Observable<any> {
+
+    let url: string = restURL.getPostReactionsOfUser;
+    let newstr = url.replace("[[username]]", String(username));
+     newstr = newstr.replace("[[reaction]]", String(reaction));
+
+
+     let returnObject = this.http.get(newstr);
+     
+    return returnObject;
+/*
+    return this.http.get<any>(newstr).pipe(
+      map((response: any) => response.cliente),
+      catchError(e => {
+        if (e.status != 'OK') {
+          return throwError(e);
+        }
+        console.error(e.error.mensaje);
+        return throwError(e);
+      })
+
+    );
+*/
+  }
 }

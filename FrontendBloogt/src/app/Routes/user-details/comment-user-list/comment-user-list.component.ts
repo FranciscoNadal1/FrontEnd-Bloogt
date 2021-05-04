@@ -16,12 +16,30 @@ export class CommentUserListComponent implements OnInit {
     private commentservice: CommentsService) { }
 
   ngOnInit(): void {
-    
+    console.log(this.getMenuItem())
     this.username = this.route.snapshot.params.username;
-    this.commentservice.getAllCommentsOfUsername(this.username).subscribe(commentsOfUser => (this.commentsOfUser = commentsOfUser));
-    console.log("---------------------------")
-    console.log(this.commentsOfUser)
-    console.log("---------------------------")
+    if(this.getMenuItem() === 'commentList')
+      this.commentservice.getAllCommentsOfUsername(this.username).subscribe(commentsOfUser => (this.commentsOfUser = commentsOfUser));
+
+    if (this.getMenuItem() === 'commentsLiked'){
+      console.log("que mierdas pasa")
+      this.commentservice.commentReactionsUser(this.username, 'true').subscribe(commentsOfUser => (this.commentsOfUser = commentsOfUser));
+
+     // this.commentservice.commentReactionsUser(this.username, 'true').subscribe(commentsOfUser => (this.commentsOfUser = commentsOfUser));
+
+    }
+      
+    if(this.getMenuItem() === 'commentsDisliked')
+      this.commentservice.commentReactionsUser(this.username, 'false').subscribe(commentsOfUser => (this.commentsOfUser = commentsOfUser));
+
+      console.log(this.commentsOfUser);
+  }
+
+  getMenuItem(): string{
+    let menuItem = this.route.snapshot.params.menu;
+    if(menuItem === undefined)
+      return "commentList";
+    return menuItem;
   }
 
 }
