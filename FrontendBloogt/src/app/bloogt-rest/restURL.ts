@@ -49,4 +49,12 @@ export const getCommentReactionsOfUser = baseURL + "/api/reaction/comments/user/
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////                     LOGIN
+
+export const getAllChatsUser = baseURL + "/api/chat/getAllChatsOfUser";
+export const getChatById = baseURL + "/api/chat/getChat/[[id]]";
+export const createNewChat = baseURL + "/api/chat/newChat/regularUser/[[username]]";
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////                     LOGIN
 export const login = baseURL + "/api/login";

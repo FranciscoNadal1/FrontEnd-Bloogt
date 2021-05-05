@@ -60,6 +60,10 @@
             </ul>
           </li>
       </ul>
+      
+      <button>
+        <i class="glyphicon glyphicon glyphicon-envelope"></i>
+      </button>
       <ul *ngIf="userToken.isUserLogged()" class="nav navbar-nav navbar-right ">
         <li class="dropdown ">
           <span class="btn btn-secondary btn-lg" data-toggle="dropdown">
@@ -79,6 +83,7 @@
           </ul>
         </li>
       </ul>
+
       <div *ngIf="userToken.isUserLogged()">
         <img *ngIf="!user.avatar" src="https://i.pinimg.com/474x/5d/cf/02/5dcf02265a260bb0902c1ec504d1743b.jpg"
           class="avatarImageHeader" alt="">

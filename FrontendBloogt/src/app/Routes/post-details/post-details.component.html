@@ -43,7 +43,7 @@
             src="https://www.glyphicons.com/img/glyphicons/halflings/2x/glyphicons-halflings-21-calendar@2x.png">
           -->
           <i class="glyphicon glyphicon glyphicon-calendar"></i>
-        </span><span class="createdAtPost">{{post.createdAt| date: 'dd/MM/yyyy'}}</span>
+        </span><span class="createdAtPost">{{post.createdAt| date: 'hh:mm:ss - dd/MM/yyyy'}}</span>
       </div>
     </div>
   </div>
@@ -90,8 +90,8 @@
         <div class="media-body col-11">
           <div class="well well-lg comment-header">
             <div>
-              <div class="col-6 text-uppercase float-left username"><span>{{ comment.createdBy.username }}</span></div>
-              <div class="col-6  float-right date"><span>{{comment.createdAt| date: 'dd/MM/yyyy'}}</span></div>
+              <div class="col-6 text-uppercase float-left username"><span><a [routerLink]="'/user/' + comment.createdBy.username">{{ comment.createdBy.username }}</a></span></div>
+              <div class="col-6  float-right date"><span>{{comment.createdAt| date: 'hh:mm - dd/MM/yyyy'}}</span></div>
             </div>
 
           </div>

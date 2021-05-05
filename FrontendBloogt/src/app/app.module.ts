@@ -23,6 +23,7 @@ import { PostUserListComponent } from './Routes/user-details/post-user-list/post
 import { CommentUserListComponent } from './Routes/user-details/comment-user-list/comment-user-list.component';
 import { FollowersComponent } from './Routes/user-details/Follow/followers/followers.component';
 import { FollowingComponent } from './Routes/user-details/Follow/following/following.component';
+import { ChatListComponent } from './Routes/user-chat/chat-list/chat-list.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -80,7 +81,8 @@ const customNotifierOptions: NotifierOptions = {
     PostUserListComponent,
     CommentUserListComponent,
     FollowersComponent,
-    FollowingComponent
+    FollowingComponent,
+    ChatListComponent
   ],
   imports: [
     FormsModule,
