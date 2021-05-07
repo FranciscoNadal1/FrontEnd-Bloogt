@@ -1,1 +1,61 @@
+<div class="rightSideBar">
+  <!--
 <app-category-list></app-category-list>
+-->
+
+<div class="card bg-light mb-3">
+  <div class="card-header">Latest News</div>
+  <div class="card-body newsBody">
+
+    <ul class="list-group">
+    <li  class="list-group-item list-group-item-action" *ngFor="let item of news">
+
+      <a [routerLink]="'/post/' + item.id">
+    <h5 class="card-title" [innerHTML]="item.title | CutHTMLText:30"></h5>
+    <span class="" [innerHTML]="item.category.name"></span>
+    <span class="datePost" [innerHTML]="item.createdAt | GetTimeAgoOfDate"></span>
+    
+    <!--
+    <p class="card-text" [innerHTML]="item.content | CutHTMLText:90"></p>
+    -->
+  </a>   
+  
+    </li>
+  </ul>
+  </div>
+</div>
+
+
+  <div *ngFor="let item of moreLikedPost">
+
+    <div class="card bg-light mb-3">
+      <div class="card-header">More liked post of the last hour</div>
+
+      
+      <div  class="card-body">
+        <h5 class="card-title">
+          <img width="45" *ngIf="!item.createdBy.avatar" src="https://i.pinimg.com/474x/5d/cf/02/5dcf02265a260bb0902c1ec504d1743b.jpg" class="rounded-circle"  alt="">
+          <img width="45" *ngIf="item.createdBy.avatar" [src]="item.createdBy.avatar" class="rounded-circle"  alt="">        
+   
+          <a [routerLink]="'/user/' + item.createdBy.username">
+            {{item.createdBy.username}}</a>
+          
+            <span class="datePost" [innerHTML]="item.createdAt | GetTimeAgoOfDate"></span>
+          </h5>
+        <p [routerLink]="'/post/' + item.id" class="card-text">{{item.content}}</p>
+        
+      <div>
+        <i class="glyphicon glyphicon glyphicon-thumbs-up"></i>{{item.positiveReactions}}
+        <i class="glyphicon glyphicon glyphicon-thumbs-down"></i>{{item.negativeReactions}}
+      
+      
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+</div>

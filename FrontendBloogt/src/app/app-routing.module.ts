@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'user/:username', component: UserDetailsComponent },
   { path: 'user/:username/:menu', component: UserDetailsComponent },
   { path: 'chat', component: ChatListComponent },
+  { path: 'chat/:id', component: ChatListComponent },
 ];
 
 @NgModule({

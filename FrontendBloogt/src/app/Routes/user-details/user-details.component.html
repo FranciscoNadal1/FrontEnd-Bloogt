@@ -48,7 +48,7 @@
 				<!-- SIDEBAR BUTTONS -->
 				<div *ngIf="!getLoggedUsername()" class="profile-userbuttons">
 					<button (click)="followUser()" type="button" class="btn btn-success btn-sm">Follow</button>
-					<button type="button" class="btn btn-danger btn-sm">
+					<button (click)="createChat()" type="button" class="btn btn-danger btn-sm">
 						<i class="glyphicon glyphicon-envelope"></i></button>
 				</div>
 				<!-- END SIDEBAR BUTTONS -->

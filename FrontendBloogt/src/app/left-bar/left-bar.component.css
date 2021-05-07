@@ -1,0 +1,72 @@
+.leftSideBar{
+    position:fixed;
+    
+    overflow-y: auto;
+    z-index:99;
+    width:200px;
+}
+
+.leftSideBarPlaceholder{
+    height:1px;
+    width:100%;
+    margin:0px;
+}
+
+
+
+
+.image-circle{
+    border-radius: 50%;
+    width: 110px;
+    height: 110px;
+    border: 4px solid #FFF;
+    margin-top: -30px;
+    margin-bottom:10px;
+}
+
+.subImage{
+    margin-bottom:    10px;
+}
+
+
+
+.userBar{
+    
+    margin-bottom:30px;
+    margin-left:0px;
+    margin-right:0px;
+    
+    border:1px solid black;
+}
+.leftSideBar{
+
+    border-radius:15px 15px 0px 0px;
+}
+
+.leftSideBar .row{
+    margin-right: none;
+    margin-left: none;
+}
+
+.userBar .header{
+    background-color:green;
+    height:50px;
+    width:100%;
+}
+.followingFollowers{
+    border-top:1px solid black;
+    padding-left:15px;
+    padding-right:15px;
+    padding-top:10px;
+}
+.followingFollowers div:first-child{
+    
+    
+}
+.postNumber{
+    
+    padding-left:15px;
+    padding-right:15px;
+    padding-top:10px;
+    border-top:1px solid black;
+}

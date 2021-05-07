@@ -29,6 +29,25 @@ export class PostService {
     return returnObject;
   }
 
+  public getMoreLikedPostLastHour(category: string): Observable<any> {
+    
+    let url: string =  restURL.moreLikedPostLasHour;
+    let newstr = url.replace("[[category]]", String(category));
+
+    let returnObject = this.http.get(newstr);
+
+    return returnObject;
+  }
+
+  public lastsPostsExceptCategory(category: string): Observable<any> {
+    
+    let url: string =  restURL.lastsPostsExceptCategory;
+    let newstr = url.replace("[[category]]", String(category));
+
+    let returnObject = this.http.get(newstr);
+
+    return returnObject;
+  }
   public getAllQuickPostsOfFollowing(): Observable<any> {
 
     let headers = new HttpHeaders({

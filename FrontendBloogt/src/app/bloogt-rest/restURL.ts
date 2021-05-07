@@ -20,7 +20,9 @@ export const followUser = baseURL + "/api/follows/follow/[[username]]";
 export const unfollowUser = baseURL + "/api/follows/unfollow/[[username]]";
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////                     POST
-export const getAllPosts = baseURL + "/api/posts/getAll";
+export const getAllPosts = baseURL + "/api/posts/getAll";;
+export const moreLikedPostLasHour = baseURL + "/api/trending/betterPost/[[category]]/0/1";
+export const lastsPostsExceptCategory = baseURL + "/api/trending/lastsPostsExceptCategory/[[category]]/0/5";
 export const getAllQuickPosts = baseURL + "/api/posts/getAll/category/name/QuickPost";
 export const getAllQuickPostsOfFollowing = baseURL + "/api/posts/getAll/following/category/name/QuickPost?includeSelf=true";
 export const getPostById = baseURL + "/api/posts/getById/[[id]]";
@@ -48,11 +50,15 @@ export const likeCommentById = baseURL + "/api/reaction/comment/[[id]]/like";
 export const getCommentReactionsOfUser = baseURL + "/api/reaction/comments/user/[[username]]?reaction=[[reaction]]";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
-///////////////                     LOGIN
+///////////////                     CHAT
 
 export const getAllChatsUser = baseURL + "/api/chat/getAllChatsOfUser";
 export const getChatById = baseURL + "/api/chat/getChat/[[id]]";
-export const createNewChat = baseURL + "/api/chat/newChat/regularUser/[[username]]";
+export const createNewChat = baseURL + "/api/chat/newChat/[[username]]";
+export const sendMessage = baseURL + "/api/chat/newMessage/[[id]]";
+export const getChatByI = baseURL + "/api/chat/getAllChatsOfUser";
+export const getUnreadMessages = baseURL + "/api/chat/unreadMessages";
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////

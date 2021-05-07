@@ -1,3 +1,15 @@
+.placeholderHeader{
+    padding-top:100px;
+
+}
+.fixedHeader{
+    position:fixed;
+    
+    width:100%;
+    z-index:100;
+    
+}
+
 .navbar-login
 {
     width: 305px;
@@ -33,4 +45,11 @@
 
 .buttonsSign li{
     margin:5px;
+}
+
+.headerEnvelope{
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:5px;
+    font-size:20px;
 }

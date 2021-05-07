@@ -10,12 +10,12 @@ import { CategoryService } from "../../services/category.service";
 export class CategoryListComponent implements OnInit {
 
   public category: any = { 
-    
+
   };
 
-  constructor(private categoryservice : CategoryService) { }
+  constructor(private categoryservice: CategoryService) { }
 
-  
+
   ngOnInit() {
     this.categoryservice.getAllCategories().subscribe(post => (this.category = post));
   }

@@ -24,6 +24,7 @@ import { CommentUserListComponent } from './Routes/user-details/comment-user-lis
 import { FollowersComponent } from './Routes/user-details/Follow/followers/followers.component';
 import { FollowingComponent } from './Routes/user-details/Follow/following/following.component';
 import { ChatListComponent } from './Routes/user-chat/chat-list/chat-list.component';
+import { LeftBarComponent } from './left-bar/left-bar.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -82,7 +83,8 @@ const customNotifierOptions: NotifierOptions = {
     CommentUserListComponent,
     FollowersComponent,
     FollowingComponent,
-    ChatListComponent
+    ChatListComponent,
+    LeftBarComponent
   ],
   imports: [
     FormsModule,
@@ -96,7 +98,7 @@ const customNotifierOptions: NotifierOptions = {
     NotifierModule.withConfig(customNotifierOptions)
   ],
   providers: [],
-  bootstrap: [AppComponent, HeaderComponent, FooterComponent, SidebarComponent]
+  bootstrap: [AppComponent, HeaderComponent, FooterComponent, SidebarComponent, LeftBarComponent]
 })
 export class AppModule { 
 

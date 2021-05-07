@@ -37,10 +37,10 @@
 
 
 .LikedPost{
-    background-color:green !important;
+    color:green !important;
 }
 .DislikedPost{
-    background-color:red !important;
+    color:red !important;
 }
 
 

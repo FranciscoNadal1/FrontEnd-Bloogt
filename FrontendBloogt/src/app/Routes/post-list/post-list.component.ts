@@ -22,7 +22,10 @@ export class PostListComponent implements OnInit {
 
   public mapPostReactions: Map<number, boolean> = new Map<number, boolean>();
 
-  constructor(private postservice: PostService, private readonly fb: FormBuilder, public userToken: UserTokenService) {
+  constructor(
+    private postservice: PostService, 
+    private readonly fb: FormBuilder, 
+    public userToken: UserTokenService) {
     this.quickpost = this.fb.group({
       message: ['']
     });

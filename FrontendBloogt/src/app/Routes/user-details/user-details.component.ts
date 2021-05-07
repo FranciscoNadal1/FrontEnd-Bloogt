@@ -8,6 +8,8 @@ import { Subscription, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { PostService } from 'src/app/bloogt-rest/services/post.service';
 import { UserTokenService } from 'src/app/login/service/user-token.service';
+import Swal from 'sweetalert2';
+import { ChatService } from 'src/app/bloogt-rest/services/chat.service';
 
 
 @Component({
@@ -31,8 +33,10 @@ export class UserDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private userservice: UserService,
     private postservice: PostService,
-    private userToken: UserTokenService
+    private userToken: UserTokenService,
+    private chatService: ChatService
     ) { }
+
 
   ngOnInit(): void {
 
@@ -79,6 +83,23 @@ this.userFollowing = this.userservice.getFollowingUsers(this.username).subscribe
   }
   unfollowUser(username: string): void{
     this.userservice.unfollowUser(this.username).subscribe();
+  }
+
+  async createChat(){
+    const { value: text } = await Swal.fire({
+      input: 'textarea',
+      inputLabel: 'Message',
+      inputPlaceholder: 'Type your message here...',
+      inputAttributes: {
+        'aria-label': 'Type your message here'
+      },
+      showCancelButton: true
+    })
+    
+    if (text) {
+    this.chatService.createNewChat(this.username, text).subscribe();
+      Swal.fire("Meesage:</br>"+text +"</br> was sent")
+    }
   }
 
   getLoggedUsername(): boolean{

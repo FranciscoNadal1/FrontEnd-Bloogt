@@ -19,7 +19,7 @@ export class ChatService {
 
   constructor(private http: HttpClient, private tokenStorage: TokenStorageService) { }
 
-  public createNewChat(username: string): Observable<any> {
+  public createNewChat(username: string, message: string): Observable<any> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.tokenStorage.getToken()
@@ -29,7 +29,21 @@ export class ChatService {
 
     let options = { headers: headers };
 
-    const data = {    };
+    const data = {"message": message};
+
+    return this.http.post<any>(newstr, data, options);
+  }
+  public sendMessageToChat(message: string, id: string): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.tokenStorage.getToken()
+    });
+    let url : string =  restURL.sendMessage;
+    let newstr = url.replace("[[id]]", id);
+
+    let options = { headers: headers };
+
+    const data = {"message": message};
 
     return this.http.post<any>(newstr, data, options);
   }
@@ -44,10 +58,41 @@ export class ChatService {
 
     let options = { headers: headers };
 
+
+    return this.http.get<any>(newstr, options);
+  }
+
+  public getUnreadMessages(): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.tokenStorage.getToken()
+    });
+    let url : string =  restURL.getUnreadMessages;
+    let newstr = url;
+
+    let options = { headers: headers };
+
+
+    return this.http.get<any>(newstr, options);
+  }
+
+
+  public getChatById(id: number): Observable<any> {    
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.tokenStorage.getToken()
+    });
+
+    let url : string =  restURL.getChatById;
+    let newstr = url.replace("[[id]]", String(id));
+
+    let options = { headers: headers };
+
     const data = {    };
 
     return this.http.get<any>(newstr, options);
   }
+
 
 
 }

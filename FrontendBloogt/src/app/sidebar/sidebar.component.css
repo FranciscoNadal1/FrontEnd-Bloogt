@@ -1,0 +1,49 @@
+.rightSideBar{
+    position: fixed;    
+    overflow-y: auto;
+}
+
+
+.datePost{
+    font-size:13px;
+    color:grey;
+    float:right;
+}
+
+.newsBody{
+    margin: 0px;
+    padding:0px;
+}
+.newsBody div{
+    margin: 20px;
+    padding:0px;
+}
+
+ .rightSideBar .news ul{
+    padding-left:15px;
+
+    
+}
+.news a:hover{
+    text-decoration: none !important;
+
+}
+.list-group-item {
+    border:0px solid black;
+}
+.list-group-item a:hover {
+    text-decoration: none;
+}
+.news hoverable:hover{
+    background-color:grey;
+    text-decoration: none;
+
+}
+.rightSideBar .news ul li{
+    
+    margin-bottom:20px;
+}
+ .a:hover{
+    
+    background-color:inherit;
+}

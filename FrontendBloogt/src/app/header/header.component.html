@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixedHeader">
   <div id="DivNavbar" class="container-fluid">
     <a class="navbar-brand" href="#">
 
@@ -61,10 +62,13 @@
           </li>
       </ul>
       
-      <button>
-        <i class="glyphicon glyphicon glyphicon-envelope"></i>
-      </button>
+      
       <ul *ngIf="userToken.isUserLogged()" class="nav navbar-nav navbar-right ">
+        <li>
+          <div class="headerEnvelope" [routerLink]="'/chat'">
+            <span>{{unreadMessages.unreadMessages}}</span><i class="glyphicon glyphicon glyphicon-envelope"></i>
+          </div>
+        </li>
         <li class="dropdown ">
           <span class="btn btn-secondary btn-lg" data-toggle="dropdown">
             Logged as : {{ userToken.getLoggedUser() }} <span class="caret"></span>
@@ -96,3 +100,5 @@
     </div>
   </div>
 </nav>
+
+<div class="placeholderHeader"></div>

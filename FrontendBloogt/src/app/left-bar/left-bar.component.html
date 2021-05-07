@@ -1,0 +1,79 @@
+
+<div class="leftSideBarPlaceholder"></div>
+
+
+
+
+<div class="leftSideBar">
+  
+
+
+	<div class="row userBar">
+    <div class="header"></div>
+	    <div class="col-md-12 col-xs-12" align="center">
+        
+            <div class="outter">
+              
+              <img *ngIf="!user.avatar" src="https://i.pinimg.com/474x/5d/cf/02/5dcf02265a260bb0902c1ec504d1743b.jpg" class="image-circle" alt="">
+              <img *ngIf="user.avatar" [src]="user.avatar" class="image-circle" alt="">
+            
+            
+            </div>  
+        <div class="subImage">
+            <h3>@{{user.username}}</h3>
+            <span>{{user.name}} {{user.surname}}</span>
+          </div> 
+	    </div>
+
+      <div class="followingFollowers">
+        <div class="col-md-6 col-xs-6 follow line float-left" align="center">
+            <h5>
+                 {{ userFollowing.length }} <br/> <span>FOLLOWING</span>
+            </h5>
+        </div>
+        <div class="col-md-6 col-xs-6 follow line float-right" align="center">
+            <h5>
+                 {{ userFollowed.length }} <br/> <span>FOLLOWERS</span>
+            </h5>
+        </div>
+      </div>
+      <div class="postNumber">
+        <div class="col-md-6 col-xs-6 follow line float-left" align="center">
+          <h5>
+               {{  user.writtenPosts  }} <br/> <span>POSTS</span>
+          </h5>
+      </div>
+      <div class="col-md-6 col-xs-6 follow line float-right" align="center">
+          <h5>
+               {{  user.writtenComments  }} <br/> <span>COMMENTS</span>
+          </h5>
+      </div>
+      </div>
+        
+            
+    </div>
+
+<div class="card bg-light mb-3" >
+    <div class="card-header">Header</div>
+    <div class="card-body">
+      <h5 class="card-title">Light card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+
+  <div class="card bg-light mb-3" >
+    <div class="card-header">Header</div>
+    <div class="card-body">
+      <h5 class="card-title">Light card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+
+  <div class="card bg-light mb-3" >
+    <div class="card-header">Header</div>
+    <div class="card-body">
+      <h5 class="card-title">Light card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import { interval, Subscription, timer } from 'rxjs';
 import { TokenStorageService } from '../login/service/token-storage.service';
 import Swal from 'sweetalert2';
 import { UserService } from '../bloogt-rest/services/user.service';
+import { ChatService } from '../bloogt-rest/services/chat.service';
 
 @Component({
   selector: 'app-header',
@@ -15,14 +16,20 @@ export class HeaderComponent implements OnInit {
 
   public user: any = {   };
   public username: string;
+  public unreadMessages: number = 0;
 
-  constructor(public userToken: UserTokenService, public tokenService: TokenStorageService,private userservice: UserService) { }
+  constructor(
+    public userToken: UserTokenService,
+    public tokenService: TokenStorageService,
+    private userservice: UserService,
+    private chatservice: ChatService) { }
 
   ngOnInit(): void {
 
     if(this.tokenService.isTokenDefined){
       this.username = this.userToken.getLoggedUser();
       this.userservice.getUserDetailsByUsername(this.username).subscribe(user => (this.user = user));
+      this.chatservice.getUnreadMessages().subscribe(unreadMessages => (this.unreadMessages = unreadMessages));
     }
 
     const reloadInterval = 10000;

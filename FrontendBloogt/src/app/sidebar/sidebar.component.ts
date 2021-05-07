@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PostService } from '../bloogt-rest/services/post.service';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
@@ -8,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  public moreLikedPost: any = {  };
+  public news: any = {  };
+  constructor(private postservice: PostService) { }
 
   ngOnInit(): void {
+    this.postservice.getMoreLikedPostLastHour("QuickPost").subscribe(moreLikedPost => (this.moreLikedPost = moreLikedPost));
+    this.postservice.lastsPostsExceptCategory("QuickPost").subscribe(news => (this.news = news));
   }
 
 }
