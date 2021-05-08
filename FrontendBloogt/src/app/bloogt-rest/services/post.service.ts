@@ -30,8 +30,8 @@ export class PostService {
   }
 
   public getMoreLikedPostLastHour(category: string): Observable<any> {
-    
-    let url: string =  restURL.moreLikedPostLasHour;
+
+    let url: string = restURL.moreLikedPostLasHour;
     let newstr = url.replace("[[category]]", String(category));
 
     let returnObject = this.http.get(newstr);
@@ -40,8 +40,8 @@ export class PostService {
   }
 
   public lastsPostsExceptCategory(category: string): Observable<any> {
-    
-    let url: string =  restURL.lastsPostsExceptCategory;
+
+    let url: string = restURL.lastsPostsExceptCategory;
     let newstr = url.replace("[[category]]", String(category));
 
     let returnObject = this.http.get(newstr);
@@ -62,6 +62,22 @@ export class PostService {
     return returnObject;
   }
 
+  public getLastTrendingHashtag(): Observable<any> {
+   
+    let returnObject = this.http.get(restURL.getLastTrendingHashtag);
+
+    return returnObject;
+  }
+
+  public getAllPostsOfHashtag(hashtag: string): Observable<any> {
+
+    let url: string = restURL.getAllPostsOfHashtag;
+    let newstr = url.replace("[[hashtag]]", String(hashtag));
+
+    let returnObject = this.http.get(newstr);
+
+    return returnObject;
+  }
 
   public getReactionsOfPost(): Observable<JSON> {
 
@@ -76,9 +92,9 @@ export class PostService {
     return returnObject;
   }
 
-  public getPostById(id : number): Observable<any> {
-    let url : string =  restURL.getPostById;
-    let newstr = url.replace("[[id]]", String(id)); 
+  public getPostById(id: number): Observable<any> {
+    let url: string = restURL.getPostById;
+    let newstr = url.replace("[[id]]", String(id));
 
     let returnObject = this.http.get(newstr);
 
@@ -86,9 +102,9 @@ export class PostService {
   }
 
   public getPostByUsername(username: string): Observable<any> {
-    let url : string =  restURL.getPostByUsername;
+    let url: string = restURL.getPostByUsername;
     let newstr = url.replace("[[username]]", String(username));
-    
+
     let returnObject = this.http.get(newstr);
 
     return returnObject;
@@ -103,7 +119,7 @@ export class PostService {
 
     let options = { headers: headers };
 
-    const data =   {
+    const data = {
       "content": message,
       "title": "QuickPost",
       "category": "QuickPost",
@@ -164,24 +180,12 @@ export class PostService {
 
     let url: string = restURL.getPostReactionsOfUser;
     let newstr = url.replace("[[username]]", String(username));
-     newstr = newstr.replace("[[reaction]]", String(reaction));
+    newstr = newstr.replace("[[reaction]]", String(reaction));
 
 
-     let returnObject = this.http.get(newstr);
-     
+    let returnObject = this.http.get(newstr);
+
     return returnObject;
-/*
-    return this.http.get<any>(newstr).pipe(
-      map((response: any) => response.cliente),
-      catchError(e => {
-        if (e.status != 'OK') {
-          return throwError(e);
-        }
-        console.error(e.error.mensaje);
-        return throwError(e);
-      })
 
-    );
-*/
   }
 }

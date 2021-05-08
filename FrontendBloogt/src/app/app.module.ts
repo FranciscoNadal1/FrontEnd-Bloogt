@@ -25,6 +25,7 @@ import { FollowersComponent } from './Routes/user-details/Follow/followers/follo
 import { FollowingComponent } from './Routes/user-details/Follow/following/following.component';
 import { ChatListComponent } from './Routes/user-chat/chat-list/chat-list.component';
 import { LeftBarComponent } from './left-bar/left-bar.component';
+import { HashtagLinkification } from './customPipes/hashtagLinkification.pipe';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -78,6 +79,7 @@ const customNotifierOptions: NotifierOptions = {
     PostListComponent,
     UserDetailsComponent,
     CutHtmlText,
+    HashtagLinkification,
     TimeAgo,
     PostUserListComponent,
     CommentUserListComponent,

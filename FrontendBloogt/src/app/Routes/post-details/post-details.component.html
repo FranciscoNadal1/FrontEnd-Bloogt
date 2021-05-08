@@ -14,7 +14,7 @@
           <a href="/post/fromCategory/2">{{post.category.name}}</a>
         </div>
 
-        <div class="card-text" [innerHTML]="post.content"></div>
+        <div class="card-text" [innerHTML]="post.content | HashtagLinks"></div>
       </div>
     </div>
   </div>

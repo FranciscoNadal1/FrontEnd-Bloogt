@@ -49,7 +49,6 @@
 </form>
 </div>
 
-
 <div *ngFor="let item of post">
   <div class="card gedf-card">
     <div class="card-header">
@@ -92,7 +91,7 @@
             -->
         </a>
 
-        <p class="card-text" [innerHTML]="item.content | CutHTMLText:1000">
+        <p class="card-text" [innerHTML]="item.content | CutHTMLText:1000 | HashtagLinks">
             
         </p>
         <a class="" [routerLink]="'/post/' + item.id">Read More...</a>

@@ -38,6 +38,10 @@ export const getAllCategories = baseURL + "/api/category/getAllCategories";
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////                     HASHTAG
 export const getAllHashtags = baseURL + "/api/hashtags/getAllHashtags";
+export const getAllPostsOfHashtag = baseURL + "/api/hashtags/getPostsOfHashtagByName/[[hashtag]]";
+export const getLastTrendingHashtag = baseURL + "/api/trending/trendingLastHour/0/10";
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////                     COMMENTS

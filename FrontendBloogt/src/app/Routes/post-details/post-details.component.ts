@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 
 import { PostService } from '../../bloogt-rest/services/post.service';
@@ -25,8 +25,15 @@ export class PostDetailsComponent implements OnInit {
     public userToken: UserTokenService,
     private route: ActivatedRoute,
     private postservice: PostService,
-    private commentservice: CommentsService
-    ) {    }
+    private commentservice: CommentsService,
+    private router: Router
+    ) {
+
+      router.events.subscribe((val) => {
+        this.ngOnInit();
+    });
+
+    }
 
   ngOnInit() {
     this.getPostInfo();

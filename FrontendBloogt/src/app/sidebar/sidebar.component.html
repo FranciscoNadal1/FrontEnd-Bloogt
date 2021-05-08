@@ -42,7 +42,7 @@
           
             <span class="datePost" [innerHTML]="item.createdAt | GetTimeAgoOfDate"></span>
           </h5>
-        <p [routerLink]="'/post/' + item.id" class="card-text">{{item.content}}</p>
+        <p [routerLink]="'/post/' + item.id" class="card-text" [innerHTML]="item.content | HashtagLinks"></p>
         
       <div>
         <i class="glyphicon glyphicon glyphicon-thumbs-up"></i>{{item.positiveReactions}}

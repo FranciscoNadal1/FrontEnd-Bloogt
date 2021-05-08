@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { filter, map, startWith, takeUntil } from 'rxjs/operators';
 import { UserTokenService } from 'src/app/login/service/user-token.service';
 import Swal from 'sweetalert2';
 import { PostService } from "../../bloogt-rest/services/post.service";
@@ -12,31 +16,48 @@ import { PostService } from "../../bloogt-rest/services/post.service";
 export class PostListComponent implements OnInit {
 
 
+  private ngUnsubscribe = new Subject();
   quickpost: FormGroup;
 
-  public post: any = {
-  };
-
+  public post: any = {  };
+  public postHash: any = {  };
   public postReactions: any = {
   };
 
   public mapPostReactions: Map<number, boolean> = new Map<number, boolean>();
 
   constructor(
+    private route: ActivatedRoute,
     private postservice: PostService, 
     private readonly fb: FormBuilder, 
-    public userToken: UserTokenService) {
+    public userToken: UserTokenService,
+    private router: Router) {
     this.quickpost = this.fb.group({
       message: ['']
     });
+
+    router.events.subscribe((val) => {
+      this.ngOnInit();
+  });
+
+
+    
   }
 
   ngOnInit() {
-    this.getQuickPostsOfFollowing();
+    if(this.route.snapshot.params.hashtagName === undefined){
+      
+      this.getQuickPostsOfFollowing();
 
-    this.getReactionsOfPosts();
+      this.getReactionsOfPosts();
+    }else{
+console.log(this.route.snapshot.params.hashtagName)
+      this.getPostsOfHashtag(this.route.snapshot.params.hashtagName);
+      this.getReactionsOfPosts();
+    }
 
   }
+
 /////////////////
 
 
@@ -65,8 +86,16 @@ export class PostListComponent implements OnInit {
     this.postservice.getAllQuickPosts().subscribe(post => (this.post = post));
   }
 
+  getPostsOfHashtag(hashtag: string) {
+    this.postservice.getAllPostsOfHashtag(hashtag)
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe(postHash => (this.post = postHash.posts));
+  }
+
   getQuickPostsOfFollowing() {
-    this.postservice.getAllQuickPostsOfFollowing().subscribe(post => (this.post = post));
+    this.postservice.getAllQuickPostsOfFollowing()    
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe(post => (this.post = post));
   }
   newQuickPost() {
 

@@ -18,6 +18,15 @@ export class CutHtmlText implements PipeTransform {
       cutContent = cutContent + " ...";
     }
 
+    var words = cutContent.split(" ");
+words.forEach( function(valor: string, indice, array) {
+  if(valor.startsWith('#')){
+    let hashtag = valor.substr(1)
+    cutContent = cutContent.replace(valor,'<a href=\"/hashtag/'+hashtag+'\">'+valor+'</a>')
+  }
+
+});
+
     return cutContent;
   }
 }

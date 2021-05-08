@@ -17,24 +17,31 @@ export class LeftBarComponent implements OnInit {
   public username: string;
   public userFollowing: any = {   };
   public userFollowed: any = {   };
+  public trendingHashtags: any = {   };
 
   constructor(
-    private userservice: UserService,
+    private userService: UserService,
+    private postService: PostService,
     private userToken: UserTokenService) { }
 
   ngOnInit(): void {
-    
+
     this.username = this.userToken.getLoggedUser()
-    this.userservice.getUserDetailsByUsername(this.username).subscribe(user => (this.user = user));
+    this.userService.getUserDetailsByUsername(this.username).subscribe(user => (this.user = user));
 
     this.subscription = timer(0, 10000).pipe(
-      switchMap(() => this.userservice.getFollowingUsers(this.username))
+      switchMap(() => this.userService.getFollowingUsers(this.username))
     ).subscribe(userFollowing => this.userFollowing = userFollowing);
 
     this.subscription = timer(0, 10000).pipe(
-      switchMap(() => this.userservice.getFollowedByUsers(this.username))
+      switchMap(() => this.userService.getFollowedByUsers(this.username))
     ).subscribe(userFollowed => this.userFollowed = userFollowed);
 
+    this.subscription = timer(0, 10000).pipe(
+      switchMap(() => this.postService.getLastTrendingHashtag())
+    ).subscribe(trendingHashtags => this.trendingHashtags = trendingHashtags);
+
+    console.log(this.trendingHashtags);
 
   }
 
