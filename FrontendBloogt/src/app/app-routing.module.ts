@@ -1,6 +1,7 @@
 import { NgModule, OnChanges } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { PostBarComponent } from './common-parts/post-bar/post-bar.component';
 import { PostDetailsComponent } from './Routes/post-details/post-details.component';
 import { PostListComponent } from './Routes/post-list/post-list.component';
 import { ChatListComponent } from './Routes/user-chat/chat-list/chat-list.component';
@@ -22,7 +23,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
-export class AppRoutingModule   { 
-
-
-}
+export class AppRoutingModule   { }

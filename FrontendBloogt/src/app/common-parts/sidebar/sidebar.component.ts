@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../bloogt-rest/services/post.service';
+import { PostService } from '../../bloogt-rest/services/post.service';
 import { RouterModule } from '@angular/router';
 
 

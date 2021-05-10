@@ -4,28 +4,30 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BloogtRestModule } from './bloogt-rest/bloogt-rest.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from "@angular/common/http";
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './common-parts/header/header.component';
+import { FooterComponent } from './common-parts/footer/footer.component';
+import { SidebarComponent } from './common-parts/sidebar/sidebar.component';
 import { PostDetailsComponent } from './Routes/post-details/post-details.component';
 import { PostListComponent } from './Routes/post-list/post-list.component';
 import { UserDetailsComponent } from './Routes/user-details/user-details.component';
 
-import { CutHtmlText } from './customPipes/cutHtmlText.pipe';
+import { CutHtmlText } from './common-parts/customPipes/cutHtmlText.pipe';
 import { LoginRoutingModule } from './login/login-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { OnChanges } from '@angular/core';
-import { TimeAgo } from './customPipes/timeAgo.pipe';
+import { TimeAgo } from './common-parts/customPipes/timeAgo.pipe';
 import { PostUserListComponent } from './Routes/user-details/post-user-list/post-user-list.component';
 import { CommentUserListComponent } from './Routes/user-details/comment-user-list/comment-user-list.component';
 import { FollowersComponent } from './Routes/user-details/Follow/followers/followers.component';
 import { FollowingComponent } from './Routes/user-details/Follow/following/following.component';
 import { ChatListComponent } from './Routes/user-chat/chat-list/chat-list.component';
-import { LeftBarComponent } from './left-bar/left-bar.component';
-import { HashtagLinkification } from './customPipes/hashtagLinkification.pipe';
+import { LeftBarComponent } from './common-parts/left-bar/left-bar.component';
+import { HashtagLinkification } from './common-parts/customPipes/hashtagLinkification.pipe';
+import { CommonPartsModule } from './common-parts/common-parts.module';
+import { PostBarComponent } from './common-parts/post-bar/post-bar.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -72,21 +74,14 @@ const customNotifierOptions: NotifierOptions = {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    SidebarComponent,
     PostDetailsComponent,
     PostListComponent,
     UserDetailsComponent,
-    CutHtmlText,
-    HashtagLinkification,
-    TimeAgo,
     PostUserListComponent,
     CommentUserListComponent,
     FollowersComponent,
     FollowingComponent,
-    ChatListComponent,
-    LeftBarComponent
+    ChatListComponent
   ],
   imports: [
     FormsModule,
@@ -97,12 +92,11 @@ const customNotifierOptions: NotifierOptions = {
     BloogtRestModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    CommonPartsModule,
     NotifierModule.withConfig(customNotifierOptions)
   ],
+  exports: [],
   providers: [],
-  bootstrap: [AppComponent, HeaderComponent, FooterComponent, SidebarComponent, LeftBarComponent]
+  bootstrap: [AppComponent, HeaderComponent, FooterComponent, SidebarComponent, LeftBarComponent, PostBarComponent]
 })
-export class AppModule { 
-
-  
-}
+export class AppModule { }

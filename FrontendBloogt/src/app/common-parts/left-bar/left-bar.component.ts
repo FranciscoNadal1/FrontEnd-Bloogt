@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { PostService } from '../bloogt-rest/services/post.service';
-import { UserService } from '../bloogt-rest/services/user.service';
-import { UserTokenService } from '../login/service/user-token.service';
+import { PostService } from '../../bloogt-rest/services/post.service';
+import { UserService } from '../../bloogt-rest/services/user.service';
+import { UserTokenService } from '../../login/service/user-token.service';
 
 @Component({
   selector: 'app-left-bar',

@@ -1,3 +1,6 @@
+<app-post-bar></app-post-bar>
+
+<!--
 <div class="card gedf-card">
   <form  [formGroup]="quickpost" (ngSubmit)="newQuickPost()"> 
   <div class="card-header">
@@ -48,8 +51,9 @@
   </div>
 </form>
 </div>
-
-<div *ngFor="let item of post">
+-->
+<div *ngIf="!loading">
+<div class="postList" #postList *ngFor="let item of post">
   <div class="card gedf-card">
     <div class="card-header">
         <div class="d-flex justify-content-between align-items-center">          
@@ -120,5 +124,6 @@
       </button>
       <div class="input-placeholder">Add a comment...</div>
   </div>
+</div>
 </div>
 </div>

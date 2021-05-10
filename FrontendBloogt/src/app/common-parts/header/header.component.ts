@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UserTokenService} from '../login/service/user-token.service';
-import{ LoginComponent } from '../login/component/login/login.component';
+import { UserTokenService} from '../../login/service/user-token.service';
+import{ LoginComponent } from '../../login/component/login/login.component';
 import { interval, Subscription, timer } from 'rxjs';
-import { TokenStorageService } from '../login/service/token-storage.service';
+import { TokenStorageService } from '../../login/service/token-storage.service';
 import Swal from 'sweetalert2';
-import { UserService } from '../bloogt-rest/services/user.service';
-import { ChatService } from '../bloogt-rest/services/chat.service';
+import { UserService } from '../../bloogt-rest/services/user.service';
+import { ChatService } from '../../bloogt-rest/services/chat.service';
 
 @Component({
   selector: 'app-header',

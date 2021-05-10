@@ -1,24 +1,22 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { AfterViewInit, Component,  ElementRef,  OnInit, Renderer2, ViewChild } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute, ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { Subject } from 'rxjs';
-import { filter, map, startWith, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { UserTokenService } from 'src/app/login/service/user-token.service';
-import Swal from 'sweetalert2';
-import { PostService } from "../../bloogt-rest/services/post.service";
+import { PostService } from '../../bloogt-rest/services/post.service';
 
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css']
 })
-export class PostListComponent implements OnInit {
-
+export class PostListComponent implements OnInit, Resolve<any>{
 
   private ngUnsubscribe = new Subject();
-  quickpost: FormGroup;
 
+  
+  loading = true
   public post: any = {  };
   public postHash: any = {  };
   public postReactions: any = {
@@ -26,38 +24,43 @@ export class PostListComponent implements OnInit {
 
   public mapPostReactions: Map<number, boolean> = new Map<number, boolean>();
 
+
   constructor(
+    private element: ElementRef,
+    private renderer: Renderer2,
     private route: ActivatedRoute,
-    private postservice: PostService, 
-    private readonly fb: FormBuilder, 
+    private postservice: PostService,
     public userToken: UserTokenService,
     private router: Router) {
-    this.quickpost = this.fb.group({
-      message: ['']
-    });
 
     router.events.subscribe((val) => {
+      //this.loading = true
+      try{
       this.ngOnInit();
+      }finally{
+        //this.loading = false
+      }
   });
 
-
-    
   }
 
   ngOnInit() {
+    this.loading = true
     if(this.route.snapshot.params.hashtagName === undefined){
-      
+
       this.getQuickPostsOfFollowing();
 
       this.getReactionsOfPosts();
     }else{
-console.log(this.route.snapshot.params.hashtagName)
+
       this.getPostsOfHashtag(this.route.snapshot.params.hashtagName);
       this.getReactionsOfPosts();
     }
 
   }
-
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    this.loading = false
+   }
 /////////////////
 
 
@@ -93,52 +96,11 @@ console.log(this.route.snapshot.params.hashtagName)
   }
 
   getQuickPostsOfFollowing() {
-    this.postservice.getAllQuickPostsOfFollowing()    
+    this.postservice.getAllQuickPostsOfFollowing()
     .pipe(takeUntil(this.ngUnsubscribe))
     .subscribe(post => (this.post = post));
   }
-  newQuickPost() {
-
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "¿Do you want to post this?",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, send it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-
-        this.postservice.createNewQuickMessage(
-          this.quickpost.value.message,
-        ).subscribe(
-          res => {
-            if (res.status === 'OK') {
-
-            }
-          }
-        );
-
-
-        Swal.fire(
-          'Done!',
-          'Your post was made.',
-          'success'
-        );
-        this.getQuickPostsOfFollowing();
-
-        this.quickpost = this.fb.group({
-          message: ['']
-        });
-      }
-    })
-
-
-
-
-
-  }
+  
 
   thumbUpPost(id: number) {
     this.getReactionsOfPosts();
