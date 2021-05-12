@@ -111,7 +111,7 @@ export class PostService {
   }
 
 
-  public createNewQuickMessage(message: string): Observable<any> {
+  public createNewQuickMessage(message: string, imageArray: string[]): Observable<any> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.tokenStorage.getToken()
@@ -119,11 +119,12 @@ export class PostService {
 
     let options = { headers: headers };
 
+    let firstImage = imageArray[0]
     const data = {
       "content": message,
       "title": "QuickPost",
       "category": "QuickPost",
-      "imagePost": null
+      "imagePost": firstImage
     };
 
     return this.http.post<any>(restURL.createNewPost, data, options);

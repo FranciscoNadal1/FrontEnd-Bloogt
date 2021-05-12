@@ -10,9 +10,12 @@ import { CutHtmlText } from './customPipes/cutHtmlText.pipe';
 import { HashtagLinkification } from './customPipes/hashtagLinkification.pipe';
 import { TimeAgo } from './customPipes/timeAgo.pipe';
 import { AppRoutingModule } from '../app-routing.module';
+import { LoginComponent } from '../login/component/login/login.component';
+import { LoginRoutingModule } from '../login/login-routing.module';
 
 @NgModule({
   declarations: [
+    
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
@@ -23,6 +26,7 @@ import { AppRoutingModule } from '../app-routing.module';
     TimeAgo
   ],
   imports: [
+    LoginRoutingModule,
     AppRoutingModule,
     CommonModule,
     FormsModule,

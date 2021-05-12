@@ -2,6 +2,7 @@ import { AfterViewInit, Component,  ElementRef,  OnInit, Renderer2, ViewChild } 
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { Subject } from 'rxjs';
+import { finalize } from 'rxjs/internal/operators/finalize';
 import { takeUntil } from 'rxjs/operators';
 import { UserTokenService } from 'src/app/login/service/user-token.service';
 import { PostService } from '../../bloogt-rest/services/post.service';
@@ -11,12 +12,12 @@ import { PostService } from '../../bloogt-rest/services/post.service';
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css']
 })
-export class PostListComponent implements OnInit, Resolve<any>{
+export class PostListComponent implements OnInit{
 
   private ngUnsubscribe = new Subject();
 
   
-  loading = true
+  loadingPostList = true
   public post: any = {  };
   public postHash: any = {  };
   public postReactions: any = {
@@ -45,12 +46,13 @@ export class PostListComponent implements OnInit, Resolve<any>{
   }
 
   ngOnInit() {
-    this.loading = true
+    this.loadingPostList = true
     if(this.route.snapshot.params.hashtagName === undefined){
+    //  this.loadingPostList = false
 
       this.getQuickPostsOfFollowing();
-
       this.getReactionsOfPosts();
+      this.loadingPostList = false
     }else{
 
       this.getPostsOfHashtag(this.route.snapshot.params.hashtagName);
@@ -58,9 +60,7 @@ export class PostListComponent implements OnInit, Resolve<any>{
     }
 
   }
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    this.loading = false
-   }
+
 /////////////////
 
 
@@ -86,13 +86,28 @@ export class PostListComponent implements OnInit, Resolve<any>{
   }
 
   getQuickPosts() {
+    /*
     this.postservice.getAllQuickPosts().subscribe(post => (this.post = post));
+*/
+    this.postservice.getAllQuickPosts()
+    .pipe(
+      takeUntil(this.ngUnsubscribe),
+      finalize(() => {
+        this.loadingPostList = false
+   }))
+    .subscribe(post => (this.post = post));
+
   }
 
   getPostsOfHashtag(hashtag: string) {
     this.postservice.getAllPostsOfHashtag(hashtag)
-    .pipe(takeUntil(this.ngUnsubscribe))
+    .pipe(
+      takeUntil(this.ngUnsubscribe),
+      finalize(() => {
+        this.loadingPostList = false
+   }))
     .subscribe(postHash => (this.post = postHash.posts));
+
   }
 
   getQuickPostsOfFollowing() {
@@ -100,7 +115,7 @@ export class PostListComponent implements OnInit, Resolve<any>{
     .pipe(takeUntil(this.ngUnsubscribe))
     .subscribe(post => (this.post = post));
   }
-  
+
 
   thumbUpPost(id: number) {
     this.getReactionsOfPosts();
