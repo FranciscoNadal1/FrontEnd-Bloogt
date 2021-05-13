@@ -5,17 +5,51 @@
   <div class="card-body">
 
     <div>
-      <div [className]="post.imagePost ? 'col-2 mt-3  image-post  pb-5 float-left' : 'col-0'" class="">
-        <img *ngIf="post.imagePost" class="img-thumbnail" [src]="post.imagePost">
-      </div>
-      <div [className]="post.imagePost ? 'col-10 postListPost float-right' : 'col-12 postListPost float-right'"
-        class="">
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="float-right col-12">
         <div class="categoryPost  text-muted">
           <a href="/post/fromCategory/2">{{post.category.name}}</a>
         </div>
+            
+        <div *ngIf="post.imagePost != null" class="images">
+          <div class="container imageContainer">
+              <div *ngFor="let imageItem of post.imagePost; index as i">
+                  
+                      <div class="imageUpload" [ngClass]="(post.imagePost.length > 1)? 'float-left col-6':'float-left col-12'">
+                          <a [href]="imageItem">
+                              <img [src]="imageItem" />
+                          </a>
+                      </div>                        
+              </div>
+          </div>
+      </div>
+
 
         <div class="card-text" [innerHTML]="post.content | HashtagLinks"></div>
       </div>
+
+
+
+      
     </div>
   </div>
   <div id="ReadMore" class="m-2">

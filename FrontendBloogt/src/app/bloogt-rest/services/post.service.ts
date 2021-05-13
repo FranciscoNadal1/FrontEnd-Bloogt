@@ -111,7 +111,7 @@ export class PostService {
   }
 
 
-  public createNewQuickMessage(message: string, imageArray: string[]): Observable<any> {
+  public createNewQuickMessage(message: string, imageArray): Promise<any> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.tokenStorage.getToken()
@@ -119,15 +119,18 @@ export class PostService {
 
     let options = { headers: headers };
 
-    let firstImage = imageArray[0]
+
+    var arraVari = []
+
     const data = {
       "content": message,
       "title": "QuickPost",
       "category": "QuickPost",
-      "imagePost": firstImage
+      "imagePost": imageArray
     };
 
-    return this.http.post<any>(restURL.createNewPost, data, options);
+
+    return this.http.post(restURL.createNewPost, data, options).toPromise();
   }
 
   public likePost(id: number): Observable<any> {
@@ -147,7 +150,7 @@ export class PostService {
         if (e.status != 'OK') {
           return throwError(e);
         }
-        console.error(e.error.mensaje);
+       // console.error(e.error.mensaje);
         return throwError(e);
       })
 
@@ -170,7 +173,7 @@ export class PostService {
         if (e.status != 'OK') {
           return throwError(e);
         }
-        console.error(e.error.mensaje);
+      //  console.error(e.error.mensaje);
         return throwError(e);
       })
 

@@ -12,9 +12,12 @@ import Swal from 'sweetalert2';
 })
 export class PostBarComponent implements OnInit {
 
-  filedata: any;
+  //filedata: any;
   quickpost: FormGroup;
-  imageArray: string[] = [];
+  imageArray: any[] = [];
+  localImages: any[] = [];
+  fileArray: any[] = [];
+
 
   constructor(
     private http: HttpClient,
@@ -27,33 +30,76 @@ export class PostBarComponent implements OnInit {
   }
 
   fileEvent(e) {
-    this.filedata = e.target.files[0];
+    const file: File = e.target.files[0];
+    //let filedata = file;
+    this.fileArray.push(file);
 
-    var myFormData = new FormData();
 
-    this.fileUpload.postFile(this.filedata).subscribe(
-      res => {
-        if (res.status === 'OK') {
-          this.imageArray.push(this.getUrlFromImageId(res.fileId));
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (e) => {
+      this.localImages.push(e.target.result);
+    }
 
-        }
-      }
-    );
+
 
 
   }
 
-  getUrlFromImageId(id: string): string {
-    let url: string = "http://localhost:8998/api/files/view/image/"
-
+  static getUrlFromImageId(id: string): string {
+    let url: string = "http://localhost:8998/api/files/view/image/";
     return url.concat(id);
   }
 
   ngOnInit(): void {
+    this.imageArray = [];
+    this.localImages = [];
   }
 
-  newQuickPost() {
+  eliminateImage(id){
+    
+    this.fileArray.splice(id, id+1);
+    this.localImages.splice(id, id+1);
 
+
+  }
+  async uploadFilesAndGetDirection(){
+
+    let imageAuxArray = [];
+    let fileupload = this.fileUpload
+
+    for(const file of this.fileArray) {
+      let json : any = await fileupload.postFile(file).toPromise();
+
+      if (json.status === 'OK') {
+        console.log(json)
+        imageAuxArray.push(PostBarComponent.getUrlFromImageId(json.fileId));
+      }
+    }
+
+
+    return imageAuxArray;
+    }
+
+
+  createQuickPost(imageArray: string[]) {
+
+    this.postservice.createNewQuickMessage(
+      this.quickpost.value.message, imageArray
+    ).then(
+      res => {
+        if (res.status === 'OK') {
+          console.log("Quickpost created")
+        }
+        if (res.status !== 'OK') {
+          console.log("Quickpost not created")
+        }
+      }
+    );
+  }
+
+  async newQuickPost() {
+    var imageArray = this.imageArray
     Swal.fire({
       title: 'Are you sure?',
       text: "¿Do you want to post this?",
@@ -62,19 +108,17 @@ export class PostBarComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, send it!'
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
 
-        this.postservice.createNewQuickMessage(
-          this.quickpost.value.message, this.imageArray
-        ).subscribe(
-          res => {
-            if (res.status === 'OK') {
 
-            }
-          }
-        );
 
+        var arraVari = await this.uploadFilesAndGetDirection();
+
+        this.createQuickPost(await arraVari);
+
+        this.localImages = [];
+        this.fileArray = [];
 
         Swal.fire(
           'Done!',

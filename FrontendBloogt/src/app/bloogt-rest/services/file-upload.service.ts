@@ -11,7 +11,7 @@ export class FileUploadService {
 
 
 
-  postFile(fileToUpload: File): Observable<any>{
+  postFile(fileToUpload: File){
 
     let headers = new HttpHeaders({
       'Content-Type': 'multipart/form-data',
@@ -22,9 +22,9 @@ export class FileUploadService {
 
     formData.append("uploaded-file", fileToUpload);
 
-    let returnObject = this.httpClient.post(restURL.uploadFiles, formData);
-
-    return returnObject;
+   
+    
+    return  this.httpClient.post(restURL.uploadFiles, formData);
 }
 
 

@@ -43,4 +43,21 @@
     color:red !important;
 }
 
+.imageContainer{
+    display:table;
+}
 
+.imageContainer img{
+    width:100%;
+    height:200px;
+    position: relative;
+    margin: 0 auto;
+    display:table;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.imageUpload{
+    padding:0px;
+    margin:0px;
+}

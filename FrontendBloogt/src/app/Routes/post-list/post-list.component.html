@@ -95,25 +95,53 @@
                     <span [innerHTML]="item.createdAt | GetTimeAgoOfDate"></span>
 
                 </div>
+
+
+
+
+
+<!--
                 <div *ngIf="item.imagePost != null">
                     <div class="container">
-                        <a [href]="item.imagePost">
-                            <img class="col-12" [src]="item.imagePost" />
+                        <div *ngFor="let image of item.imagePost; index as i">
+                        <a [href]="image">
+                            <img class="col-12" [src]="image" />
                         </a>
+                    </div>
                     </div>
 
                 </div>
+
+-->
                 <a class="card-link" href="#">
                     <!--
             <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adip.</h5>
             -->
                 </a>
-
-                <p class="card-text" [innerHTML]="item.content | CutHTMLText:1000 | HashtagLinks">
-
-                </p>
-                <a class="" [routerLink]="'/post/' + item.id">Read More...</a>
+                    <a class="" [routerLink]="'/post/' + item.id">
+                        <p class="card-text" [innerHTML]="item.content | CutHTMLText:1000 | HashtagLinks">
+                        </p>
+                    </a>
+                <a *ngIf="item.content.size > 1000" class="" [routerLink]="'/post/' + item.id">Read More...</a>
             </div>
+
+
+            
+            <div *ngIf="item.imagePost != null" class="images">
+                <div class="container imageContainer">
+                    <div *ngFor="let imageItem of item.imagePost; index as i">
+                        
+                            <div class="imageUpload" [ngClass]="(item.imagePost.length > 1)? 'float-left col-6':'float-left col-12'">
+                                <a [href]="imageItem">
+                                    <img [src]="imageItem" />
+                                </a>
+                            </div>                        
+                    </div>
+                </div>
+            </div>
+
+
+
             <div class="card-footer">
                 <button (click)="thumbUpPost(item.id)" [className]="PostReactionTrueOrFalse(item.id) === true ? '
       btn btn-default LikedPost' : '
