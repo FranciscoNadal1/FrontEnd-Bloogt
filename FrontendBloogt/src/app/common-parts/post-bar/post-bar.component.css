@@ -23,3 +23,33 @@
     margin:0px;
 }
 
+.eliminateImage .glyphicon{
+    z-index:10;
+    background-color: rgba(200, 200, 200, 0.3);
+    padding:15px;
+    border-radius: 50%;
+}
+
+.postTextArea{
+}
+
+.formFieldPostTextarea{
+    width:100%;
+}
+.formFieldPostTextarea:first div{
+    margin-bottom:0px !important;
+}
+
+
+
+.btn-toolbar .container, .btn-toolbar .buttonGroup2 , .btn-toolbar .buttonGroup1{
+    padding:0px  !important;
+    margin:0px !important;
+}
+.btn-toolbar .buttonGroup1 {
+    text-align:left;
+}
+.btn-toolbar .buttonGroup2 {
+    text-align:right;
+
+}

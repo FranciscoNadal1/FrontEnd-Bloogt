@@ -14,7 +14,10 @@ export class HashtagLinkification implements PipeTransform {
   words.forEach( function(valor: string, indice, array) {
     if(valor.startsWith('#')){
       let hashtag = valor.substr(1)
-      content = content.replace(valor,'<a href=\"/hashtag/'+hashtag+'\">'+valor+'</a>')
+      content = content.replace(valor,'<a href=\"/#/hashtag/'+hashtag+'\">'+valor+'</a>')
+     // content = content.replace(valor,'<a [routerLink]="[/hashtag, '+hashtag+']">'+valor+'</a>')
+                  
+
     }
 });
 

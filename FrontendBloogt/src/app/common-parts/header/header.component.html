@@ -42,14 +42,19 @@
       </form>
 
       <ul *ngIf="!userToken.isUserLogged()" class="nav navbar-nav navbar-right buttonsSign">
-          <li class="btn btn-primary btn-lg">
-           <a [routerLink]="'/registration'"> Sign up </a>
+          <li >
+
+<button [routerLink]="'/registration'" mat-flat-button="" color="primary" class="mat-focus-indicator mat-flat-button mat-button-base mat-primary">
+            Sign up 
+</button>
+
           </li>
 
           <li class="dropdown ">
-            <span class="btn btn-primary btn-lg" data-toggle="dropdown">
-              Sign in <span class="caret"></span>
-            </span>
+            <button  data-toggle="dropdown"mat-flat-button="" color="primary" class="mat-focus-indicator mat-flat-button mat-button-base mat-primary">  
+              Sign in 
+            </button>
+
             <ul id="login-dp" class="dropdown-menu dropdown-menu-right">
               <li>
                 <div class="row">
@@ -66,7 +71,12 @@
       <ul *ngIf="userToken.isUserLogged()" class="nav navbar-nav navbar-right ">
         <li>
           <div class="headerEnvelope" [routerLink]="'/chat'">
-            <span>{{unreadMessages.unreadMessages}}</span><i class="glyphicon glyphicon glyphicon-envelope"></i>
+            <button mat-raised-button color="primary"
+            [matBadge]="unreadMessages.unreadMessages" matBadgePosition="before" matBadgeColor="accent">
+            <i class="glyphicon glyphicon glyphicon-envelope"></i>
+          
+          </button>
+
           </div>
         </li>
         <li class="dropdown ">

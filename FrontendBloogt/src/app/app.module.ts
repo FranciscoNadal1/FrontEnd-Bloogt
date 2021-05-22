@@ -28,7 +28,9 @@ import { LeftBarComponent } from './common-parts/left-bar/left-bar.component';
 import { HashtagLinkification } from './common-parts/customPipes/hashtagLinkification.pipe';
 import { CommonPartsModule } from './common-parts/common-parts.module';
 import { PostBarComponent } from './common-parts/post-bar/post-bar.component';
-
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -84,6 +86,7 @@ const customNotifierOptions: NotifierOptions = {
     ChatListComponent
   ],
   imports: [
+    TextareaAutosizeModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,

@@ -27,6 +27,7 @@ export class UserDetailsComponent implements OnInit {
   public userFollowing: any = {   };
   public userFollowed: any = {   };
   public username: string;
+  public showSidebar : boolean;
 
 
   constructor(
@@ -39,7 +40,7 @@ export class UserDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+this.showSidebar = false;
     this.username = this.route.snapshot.params.username;
 
 

@@ -26,6 +26,7 @@
     "jquery": "^3.6.0",
     "jwt-decode": "^3.1.2",
     "ngx-infinite-scroll": "^10.0.1",
+    "ngx-textarea-autosize": "^2.0.3",
     "rxjs": "~6.6.0",
     "rxjs-compat": "^6.6.7",
     "sweetalert2": "^10.16.6",

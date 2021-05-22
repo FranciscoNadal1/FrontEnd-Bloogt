@@ -88,12 +88,10 @@ export class PostDetailsComponent implements OnInit {
     console.log(error);
   });
 
+  }  
+
 
   
-  //  console.log(this.comments);
-   // this.commentservice.dislikeComment(id).subscribe();
-   // this.getComments();
-  }  
   postComment(message,  postId){
     var message: any = message;
     var postIdN: number = +postId;

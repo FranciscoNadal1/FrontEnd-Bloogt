@@ -4,13 +4,27 @@ import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { FileUploadService } from 'src/app/bloogt-rest/services/file-upload.service';
 import { PostService } from 'src/app/bloogt-rest/services/post.service';
 import Swal from 'sweetalert2';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { NgZone, ViewChild } from '@angular/core';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post-bar',
   templateUrl: './post-bar.component.html',
   styleUrls: ['./post-bar.component.css']
 })
+
+
 export class PostBarComponent implements OnInit {
+
+
+
+  triggerResize() {
+    // Wait for changes to be applied, then trigger textarea resize.
+    this._ngZone.onStable.pipe(take(1))
+      .subscribe(() => this.autosize.resizeToFitContent(true));
+  }
+
 
   //filedata: any;
   quickpost: FormGroup;
@@ -20,6 +34,7 @@ export class PostBarComponent implements OnInit {
 
 
   constructor(
+    private _ngZone: NgZone,
     private http: HttpClient,
     private postservice: PostService,
     private readonly fb: FormBuilder,
@@ -28,6 +43,9 @@ export class PostBarComponent implements OnInit {
       message: ['']
     });
   }
+  
+  @ViewChild('autosize', { static: false }) autosize: CdkTextareaAutosize;
+
 
   fileEvent(e) {
     const file: File = e.target.files[0];
@@ -56,20 +74,20 @@ export class PostBarComponent implements OnInit {
     this.localImages = [];
   }
 
-  eliminateImage(id){
-    
-    this.fileArray.splice(id, id+1);
-    this.localImages.splice(id, id+1);
+  eliminateImage(id) {
+
+    this.fileArray.splice(id, id + 1);
+    this.localImages.splice(id, id + 1);
 
 
   }
-  async uploadFilesAndGetDirection(){
+  async uploadFilesAndGetDirection() {
 
     let imageAuxArray = [];
     let fileupload = this.fileUpload
 
-    for(const file of this.fileArray) {
-      let json : any = await fileupload.postFile(file).toPromise();
+    for (const file of this.fileArray) {
+      let json: any = await fileupload.postFile(file).toPromise();
 
       if (json.status === 'OK') {
         console.log(json)
@@ -79,7 +97,7 @@ export class PostBarComponent implements OnInit {
 
 
     return imageAuxArray;
-    }
+  }
 
 
   createQuickPost(imageArray: string[]) {

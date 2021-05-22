@@ -61,3 +61,43 @@
     padding:0px;
     margin:0px;
 }
+
+.commentHover .avatar{
+    width:50px;
+}
+.commentHover .comment{
+    width:100%;
+}
+.commentHover .avatar img{
+    width:100%;
+}
+
+.commentBox{
+    display:flex;
+}
+.formFieldCommentTextarea{
+    width:100%;
+}
+
+.image-circle{
+    border-radius: 50%;
+    border: 2px solid #FFF;
+}
+
+
+.commentHover{
+    padding-top:20px;
+    padding-bottom:10px;
+}
+
+.commentHover .comment{
+    
+    margin-left:20px;
+    margin-right:20px;
+}
+
+.comment-card{
+    background-color:#f5f5f5;
+    margin:10px;
+    border:1px solid black;
+}

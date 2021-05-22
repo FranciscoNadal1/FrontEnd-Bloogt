@@ -12,6 +12,8 @@ import { TimeAgo } from './customPipes/timeAgo.pipe';
 import { AppRoutingModule } from '../app-routing.module';
 import { LoginComponent } from '../login/component/login/login.component';
 import { LoginRoutingModule } from '../login/login-routing.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { DemoMaterialModule } from '../material.module';
 
 @NgModule({
   declarations: [
@@ -23,9 +25,10 @@ import { LoginRoutingModule } from '../login/login-routing.module';
     LeftBarComponent,
     CutHtmlText,
     HashtagLinkification,
-    TimeAgo
+    TimeAgo,
   ],
   imports: [
+    DemoMaterialModule,
     LoginRoutingModule,
     AppRoutingModule,
     CommonModule,
@@ -33,6 +36,7 @@ import { LoginRoutingModule } from '../login/login-routing.module';
     ReactiveFormsModule
   ],
   exports:[
+    DemoMaterialModule,
     PostBarComponent,
     HeaderComponent,
     FooterComponent,

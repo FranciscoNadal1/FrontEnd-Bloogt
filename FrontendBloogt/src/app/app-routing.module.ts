@@ -8,12 +8,12 @@ import { ChatListComponent } from './Routes/user-chat/chat-list/chat-list.compon
 import { UserDetailsComponent } from './Routes/user-details/user-details.component';
 
 const routes: Routes = [
-  { path: 'hashtag/:hashtagName', component: PostListComponent },
   { path: 'post/:id', component: PostDetailsComponent },
   { path: 'user/:username/:menu', component: UserDetailsComponent },
   { path: 'user/:username', component: UserDetailsComponent },
   { path: 'chat/:id', component: ChatListComponent },
   { path: 'post', component: PostListComponent },
+  { path: 'hashtag/:hashtagName', component: PostListComponent },
   { path: 'chat', component: ChatListComponent },
   { path: '', component: PostListComponent, pathMatch: 'full'  },
 ];
