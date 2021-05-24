@@ -72,3 +72,8 @@ export const login = baseURL + "/api/login";
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////                     FILE
 export const uploadFiles = baseURL + "/api/files/upload";
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////                     NOTIFICATIONS
+export const notificationCount = baseURL + "/api/notifications/count";
+export const getSelfNotifications = baseURL + "/api/notifications/get";

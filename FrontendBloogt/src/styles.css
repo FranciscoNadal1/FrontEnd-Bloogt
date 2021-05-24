@@ -13,13 +13,23 @@ html, body { height: 100%; }
 #Wrapper { 
 	margin: 0 auto; 
 	font-family: Roboto, "Helvetica Neue", sans-serif; 
+/*
 	width:1270px;
+	*/
+}
+html {
 }
 
 body{
 	
+
+	background: url("https://wallpaperaccess.com/full/3200191.jpg") no-repeat center center fixed; 
 	
-	background-image: url("/assets/images/background.png");
+	background-color:#555;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 body a{
@@ -29,3 +39,24 @@ body a:hover{
 	text-decoration:none;
 	color:inherit;
 }
+
+#SidebarRightBar{
+	position:fixed;
+	right:0px;
+}
+
+#SidebarLeftBar{
+	position:fixed;
+	left:0px;
+}
+
+#content-section{
+	/*
+	margin:0 auto;
+
+	margin-left:250px;
+	margin-right:250px;
+	*/
+	position:inherit;
+}
+

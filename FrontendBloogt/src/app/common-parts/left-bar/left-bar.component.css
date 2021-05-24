@@ -1,14 +1,17 @@
 .leftSideBar{
-    position:fixed;
-    
+    /*
+    position:fixed;       
+    width:200px;
+    */
     overflow-y: auto;
     z-index:99;
-    width:200px;
 }
 
 .leftSideBarPlaceholder{
     height:1px;
     width:100%;
+    
+    position:fixed;  
     margin:0px;
 }
 
@@ -19,7 +22,7 @@
     border-radius: 50%;
     width: 110px;
     height: 110px;
-    border: 4px solid #FFF;
+    border: 4px solid black;
     margin-top: -30px;
     margin-bottom:10px;
 }
@@ -50,6 +53,7 @@
 
 .userBar .header{
     background-color:green;
+    background-image:url('https://images.ctfassets.net/hrltx12pl8hq/5KiKmVEsCQPMNrbOE6w0Ot/341c573752bf35cb969e21fcd279d3f9/hero-img_copy.jpg?fit=fill&w=800&h=300');
     height:50px;
     width:100%;
 }
@@ -69,6 +73,7 @@
     padding-right:15px;
     padding-top:10px;
     border-top:1px solid black;
+    width:100%;
 }
 
 

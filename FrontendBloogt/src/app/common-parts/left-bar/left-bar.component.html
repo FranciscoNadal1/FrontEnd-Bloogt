@@ -1,15 +1,10 @@
-<div class="leftSideBarPlaceholder"></div>
-
-
-
-
 <div class="leftSideBar">
 
 
 
-  <div class="row userBar">
+  <div class="row userBar bg-dark text-secondary">
     <div class="header"></div>
-    <div class="col-md-12 col-xs-12" align="center">
+    <div class="col-md-12 col-xs-12 " align="center">
 
       <div class="outter">
 
@@ -53,16 +48,16 @@
 
   </div>
 
-  <div class="card bg-light mb-3">
+  <div class="card text-white bg-dark mb-3">
     <div class="card-body">
     <div class="card-title">Trending hashtags</div>
 
 
     <div *ngFor="let item of trendingHashtags.ListTrendings; index as i">
 
-      <ul class="trending list-group list-group-flush">
+      <ul class=" trending list-group list-group-flush">
         <a [routerLink]="['/hashtag', item.name]">
-          <li class="list-group-item list-group-item list-group-item-action">            
+          <li class=" text-white bg-dark  list-group-item list-group-item list-group-item-action">            
             <div class="trendingOrder">{{i+1}} - Trending</div>
             <div class="trendingName">#{{item.name}}</div>
             <div class="trendingQuickpostCount">{{item.count}} quickposts</div>
@@ -73,8 +68,8 @@
     </div>
 </div>
   </div>
-
-  <div class="card bg-light mb-3">
+<!--
+  <div class="card text-white bg-dark mb-3">
     <div class="card-header">Header</div>
     <div class="card-body">
       <h5 class="card-title">Light card title</h5>
@@ -83,7 +78,7 @@
     </div>
   </div>
 
-  <div class="card bg-light mb-3">
+  <div class="card text-white bg-dark mb-3">
     <div class="card-header">Header</div>
     <div class="card-body">
       <h5 class="card-title">Light card title</h5>
@@ -92,3 +87,4 @@
     </div>
   </div>
 </div>
+-->

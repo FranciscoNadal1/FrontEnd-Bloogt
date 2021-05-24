@@ -53,3 +53,9 @@
     text-align:right;
 
 }
+
+.postBar{
+    margin-bottom:30px;
+
+    border-radius:16px 16px 16px 16px;
+}

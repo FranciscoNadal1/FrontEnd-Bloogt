@@ -1,0 +1,72 @@
+<div id="SidebarLeftBar" class="float-left col-2">
+  <div class="leftSideBarPlaceholder col-2"></div>
+  <app-left-bar></app-left-bar>
+</div>
+
+<div id="content-section" style="justify-content: center!important;"
+  class="d-flex float-left col-12 align-item-center ">
+  <div class="col-8">
+    <div class="card text-white bg-dark mb-3">
+      <div class="card-header">Notifications</div>
+      <div class="card-body">
+
+        <div class="card-text">
+
+          <ul *ngFor="let notification of userNotifications"class="list-group">
+
+              <li class="list-group-item list-group-item-action text-white " [ngClass]="{'bg-dark': notification.isRead === true, 'bg-secondary' : notification.isRead === false }">
+                  <div>
+                    <div class="notificationDate" >
+<i class="glyphicon glyphicon-time"></i> {{notification.createdAt | GetTimeAgoOfDate}}
+
+                    </div>
+                    
+
+
+
+                    <div class="container notificationContainer">
+                      
+                      <div class="notificationIcon col-1 float-left">
+                        <i *ngIf="notification.notificationType === 'like'" class="notificationIndicative glyphicon glyphicon-thumbs-up"></i>
+                        <i *ngIf="notification.notificationType === 'dislike'" class="notificationIndicative glyphicon glyphicon-thumbs-down"></i>
+                        <i *ngIf="notification.notificationType === 'follow'" class="notificationIndicative glyphicon glyphicon-user"></i>
+                        <i *ngIf="notification.notificationType === 'newComment'" class="notificationIndicative glyphicon glyphicon-pencil"></i>
+
+                      </div>
+                    <div class="notificationAvatarList col-2 float-left">
+                      
+                        <img width="45" *ngIf="!notification.relatedWith.avatar" src="https://i.pinimg.com/474x/5d/cf/02/5dcf02265a260bb0902c1ec504d1743b.jpg" class="rounded-circle" alt="">
+                        <img width="45" *ngIf="notification.relatedWith.avatar" [src]="notification.relatedWith.avatar" class="rounded-circle" alt="">
+                    </div>
+                    <div class="notificationText col-9 ">
+                      <span *ngIf="notification.notificationType === 'like'"><a [routerLink]="'/user/' + notification.relatedWith.username">@{{notification.relatedWith.username}}</a> has liked your post</span>
+                      <span *ngIf="notification.notificationType === 'newComment'"><a [routerLink]="'/user/' + notification.relatedWith.username">@{{notification.relatedWith.username}}</a> commented your post</span>
+                      <span *ngIf="notification.notificationType === 'dislike'"><a [routerLink]="'/user/' + notification.relatedWith.username">@{{notification.relatedWith.username}}</a> has disliked your post</span>
+                      <span *ngIf="notification.notificationType === 'follow'"><a [routerLink]="'/user/' + notification.relatedWith.username">@{{notification.relatedWith.username}}</a> is following you now</span>
+                    </div>
+                    </div>
+                    <div class="notificationQuote">
+                      <span *ngIf="notification.notificationType === 'newComment'">{{notification.relatedComment.message}}</span>
+                      <span *ngIf="notification.notificationType === 'like' && notification.relatedComment !== null">{{notification.relatedComment.message}}</span>
+                      <span *ngIf="notification.notificationType === 'dislike' && notification.relatedComment !== null">{{notification.relatedComment.message}}</span>
+                      
+                      <span *ngIf="notification.notificationType === 'like' && notification.relatedPost !== null">{{notification.relatedPost.content}}</span>
+                      <span *ngIf="notification.notificationType === 'dislike' && notification.relatedPost !== null">{{notification.relatedPost.content}}</span>
+
+                    </div>
+                    
+                  </div>
+              </li>
+
+          </ul>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="SidebarRightBar" class="float-right col-2">
+  <app-sidebar></app-sidebar>
+</div>

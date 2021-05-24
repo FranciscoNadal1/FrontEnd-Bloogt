@@ -1,0 +1,41 @@
+.notificationQuote{
+  padding:20px;
+  font-size:small;
+  border:1px solid black;
+  margin-top:10px ;
+  background-color:#555;
+
+}
+.notificationDate{
+  font-size:10px;
+  margin-right:20px;
+  margin-bottom:20px;
+  color:silver;
+}
+.card-body{
+  padding:0px;
+}
+
+.notificationContainer{
+  min-height:50px;
+}
+
+.notificationIndicative{
+  font-size:30px;
+}
+.notificationIcon{
+  width:25px;
+  padding:0px !important;
+}
+.notificationContainer .glyphicon-thumbs-up{
+  color:green !important;
+}
+.notificationContainer .glyphicon-thumbs-down{
+  color:red !important;
+}
+.notificationContainer  .glyphicon-user{
+  color:blue !important;
+}
+.notificationContainer  .glyphicon-pencil{
+  color:black !important;
+}

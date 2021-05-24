@@ -31,6 +31,7 @@ import { PostBarComponent } from './common-parts/post-bar/post-bar.component';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { NotificationListComponent } from './Routes/user-notifications/notifications.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -83,7 +84,8 @@ const customNotifierOptions: NotifierOptions = {
     CommentUserListComponent,
     FollowersComponent,
     FollowingComponent,
-    ChatListComponent
+    ChatListComponent,
+    NotificationListComponent
   ],
   imports: [
     TextareaAutosizeModule,

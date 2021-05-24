@@ -1,5 +1,7 @@
 .rightSideBar{
+    /*
     position: fixed;    
+    */
     overflow-y: auto;
 }
 

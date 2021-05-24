@@ -3,12 +3,16 @@
 <app-category-list></app-category-list>
 -->
 
-<div class="card bg-light mb-3">
+<div class="card text-white bg-dark mb-3">
   <div class="card-body newsBody">
-    <div class="card-title">Latest News</div>
+    <div class="card-title">Latest News
 
-    <ul class="list-group">
-    <li  class="list-group-item list-group-item-action" *ngFor="let item of news">
+      
+    <mat-divider></mat-divider>
+    </div>
+
+    <ul class="list-group ">
+    <li  class="list-group-item list-group-item-action text-white bg-dark" *ngFor="let item of news">
 
       <a [routerLink]="'/post/' + item.id">
     <h5 class="card-title" [innerHTML]="item.title | CutHTMLText:30"></h5>
@@ -28,11 +32,14 @@
 
   <div *ngFor="let item of moreLikedPost">
 
-    <div class="card bg-light mb-3">
+    <div class="card text-white bg-dark mb-3">
 
       
       <div  class="card-body">
-        <div class="card-title">More liked post of the last hour</div>
+        <div class="card-title">More liked post of the last hour
+          <mat-divider></mat-divider>
+        </div>
+        
         <h5 class="card-title">
           <img width="45" *ngIf="!item.createdBy.avatar" src="https://i.pinimg.com/474x/5d/cf/02/5dcf02265a260bb0902c1ec504d1743b.jpg" class="rounded-circle"  alt="">
           <img width="45" *ngIf="item.createdBy.avatar" [src]="item.createdBy.avatar" class="rounded-circle"  alt="">        

@@ -63,7 +63,7 @@ export class PostListComponent implements OnInit {
   }
 
 
-  details(elem) {
+  showHideCommentsOfPost(elem) {
     if(this.commentsOfPost.get(elem)!==undefined){
       
       this.commentsOfPost.clear();
@@ -264,6 +264,16 @@ export class PostListComponent implements OnInit {
             icon: 'success',
             showConfirmButton: false,
             timer: 1200
+          });
+
+
+          this.showHideCommentsOfPost(postId);
+          this.showHideCommentsOfPost(postId);
+
+          this.post.forEach(element => {
+            if (element.id === postId) {
+              element.commentaryCount++;
+            }
           });
 
         } else {

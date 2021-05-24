@@ -81,7 +81,7 @@
 
 .image-circle{
     border-radius: 50%;
-    border: 2px solid #FFF;
+    border: 2px solid black;
 }
 
 
@@ -101,3 +101,12 @@
     margin:10px;
     border:1px solid black;
 }
+
+button{
+    color:#ccc;
+}
+
+.postList .card, .postList .card-footer  {
+    border-radius:30px;
+}
+
