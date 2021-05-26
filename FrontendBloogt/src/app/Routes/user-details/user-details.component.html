@@ -1,3 +1,5 @@
+
+<app-header-user-details></app-header-user-details>
 <!--
 <div class="card bg-light">
     <div class="card-header">Profile</div>
@@ -25,15 +27,17 @@
 -->
 
 
-<div class="container">
-    <div class="row profile">
-		<div class="col-md-3">
-			<div class="profile-sidebar">
+<div class=" user-details ">
+    <div class="row profile ">
+		<div class="col-md-2 ">
+			<div class="profile-sidebar ">
 				<!-- SIDEBAR USERPIC -->
+				<!--
 				<div class="profile-userpic">
 					<img *ngIf="!user.avatar" src="https://i.pinimg.com/474x/5d/cf/02/5dcf02265a260bb0902c1ec504d1743b.jpg" class="img-responsive" alt="">
 					<img *ngIf="user.avatar" [src]="user.avatar" class="img-responsive" alt="">
 				</div>
+				-->
 				<!-- END SIDEBAR USERPIC -->
 				<!-- SIDEBAR USER TITLE -->
 				<div class="profile-usertitle">
@@ -127,7 +131,7 @@
 			</div>
 		</div>
 		
-		<div class="col-md-9">
+		<div class="col-md-10">
 			<app-post-user-list *ngIf="getMenuItem() === 'postList'"></app-post-user-list>
 			<app-post-user-list *ngIf="getMenuItem() === 'postsLiked'"></app-post-user-list>
 			<app-post-user-list *ngIf="getMenuItem() === 'postsDisliked'"></app-post-user-list>

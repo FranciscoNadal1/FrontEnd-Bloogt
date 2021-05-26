@@ -1,13 +1,10 @@
 
-/* Profile container */
-.profile {
-    margin: 20px 0;
-  }
+
   
   /* Profile sidebar */
   .profile-sidebar {
     padding: 20px 0 10px 0;
-    background: #fff;
+    background: #343A40;
   }
   .profile-sidebar ul{
     display:block;
@@ -71,7 +68,9 @@
   }
   
   .profile-usermenu ul li {
+    /*
     border-bottom: 1px solid #f0f4f7;
+    */
   }
   
   .profile-usermenu ul li:last-child {
@@ -90,7 +89,7 @@
   }
   
   .profile-usermenu ul li a:hover {
-    background-color: #fafcfd;
+    background-color: #343A40;
     color: #5b9bd1;
   }
   
@@ -100,8 +99,11 @@
   
   .profile-usermenu ul li.active a {
     color: #5b9bd1;
+    /*
     background-color: #f6f9fb;
+    
     border-left: 2px solid #5b9bd1;
+    */
     margin-left: -2px;
   }
   
@@ -110,4 +112,9 @@
     padding: 20px;
     background: #fff;
     min-height: 460px;
+  }
+
+  .container + .user-details{
+    width:100% !important;
+    margin:0 px;
   }

@@ -8,6 +8,7 @@ import { UserService } from '../../bloogt-rest/services/user.service';
 import { ChatService } from '../../bloogt-rest/services/chat.service';
 import { NotificationService } from 'src/app/bloogt-rest/services/notification.service';
 import { switchMap } from 'rxjs/internal/operators/switchMap';
+import { SearchService } from 'src/app/bloogt-rest/services/search.service';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +20,7 @@ export class HeaderComponent implements OnInit {
   
   subscription: Subscription;
   public user: any = {   };
+  //public searchUser: any = {   };
   public username: string;
   public unreadMessages: number = 0;
   public unreadNotifications: number = 0;
@@ -28,6 +30,7 @@ export class HeaderComponent implements OnInit {
     public tokenService: TokenStorageService,
     private userservice: UserService,
     private chatservice: ChatService,
+    private searchservice: SearchService,
     private notificationservice: NotificationService) { }
 
   ngOnInit(): void {
@@ -62,6 +65,13 @@ export class HeaderComponent implements OnInit {
     }
   }, reloadInterval);
   }
+
+/*
+  searchChange(){
+    console.log("Changed")
+    this.searchservice.searchUser("ad ").subscribe(searchUser => (this.searchUser = searchUser));
+  }
+  */
 
   goToLogin(){
    window.location.href="/login";

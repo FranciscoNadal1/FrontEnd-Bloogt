@@ -1,0 +1,54 @@
+<div class="profile">
+<div class="profile-header">
+    <div class="profile-header-cover"></div>
+    <div class="profile-header-content text-white bg-dark">
+        <div class="profile-header-img"> 
+          <img *ngIf="!userStatistics.avatar" src="https://i.pinimg.com/474x/5d/cf/02/5dcf02265a260bb0902c1ec504d1743b.jpg"
+            class="avatarImageToolbar" alt="">
+          <img *ngIf="userStatistics.avatar" [src]="userStatistics.avatar" class="avatarImageToolbar" alt="">
+        
+        
+        
+        </div>
+        
+        <ul class="profile-header-tab nav nav-tabs nav-tabs-v2 ">
+            <li class="nav-item"> <a href="#profile-post" class="nav-link" data-toggle="tab">
+                    <div class="nav-field">Posts</div>
+                    <div class="nav-value">{{userStatistics.totalPosts}}</div>
+                </a></li>
+            <li class="nav-item"> <a href="#profile-followers" class="nav-link active" data-toggle="tab">
+                    <div class="nav-field">Followers</div>
+                    <div class="nav-value">{{userStatistics.followers}}</div>
+                </a></li>
+            <li class="nav-item"> <a href="#profile-followers" class="nav-link" data-toggle="tab">
+                    <div class="nav-field">Following</div>
+                    <div class="nav-value">{{userStatistics.following}}</div>
+            </a></li>
+            <li class="nav-item"> <a href="#profile-media" class="nav-link" data-toggle="tab">
+                    <div class="nav-field">Photos</div>
+                    <div class="nav-value">{{userStatistics.totalImages}}</div>
+                </a></li>
+            <li class="nav-item"> <a href="#profile-media" class="nav-link" data-toggle="tab">
+                    <div class="nav-field">Comments</div>
+                    <div class="nav-value">{{userStatistics.totalComments}}</div>
+                </a></li>
+                <li class="nav-item"> <a href="#profile-media" class="nav-link" data-toggle="tab">
+                    <div class="nav-field">Likes</div>
+                    <div class="nav-value">{{userStatistics.totalPostsLikes}}</div>
+                </a></li>
+                <li class="nav-item"> <a href="#profile-media" class="nav-link" data-toggle="tab">
+                    <div class="nav-field">Dislikes</div>
+                    <div class="nav-value">{{userStatistics.totalPostsDislikes}}</div>
+                </a></li>
+
+                <li class="nav-item"> <a href="#profile-media" class="nav-link" data-toggle="tab">
+                    <div class="nav-field">Likes</div>
+                    <div class="nav-value">{{userStatistics.totalCommentsLikes}}</div>
+                </a></li>
+                <li class="nav-item"> <a href="#profile-media" class="nav-link" data-toggle="tab">
+                    <div class="nav-field">Dislikes</div>
+                    <div class="nav-value">{{userStatistics.totalCommentsDislikes}}</div>
+                </a></li>
+        </ul>
+    </div>
+</div></div>

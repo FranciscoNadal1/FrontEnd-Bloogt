@@ -77,3 +77,11 @@ export const uploadFiles = baseURL + "/api/files/upload";
 ///////////////                     NOTIFICATIONS
 export const notificationCount = baseURL + "/api/notifications/count";
 export const getSelfNotifications = baseURL + "/api/notifications/get";
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////                     STATISTICS
+export const getUserStatistics = baseURL + "/api/charts/user/statistics/[[username]]";
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////                     SEARCH
+export const searchUser = baseURL + "/api/search/user/[[username]]/5";

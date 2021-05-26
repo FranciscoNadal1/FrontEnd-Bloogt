@@ -1,0 +1,47 @@
+<input 
+(keyup)="changedContentSearchBar($event.target.value)" 
+(focusin)="changedContentSearchBar($event.target.value)"
+(focusout)="cleanSearchBar()"
+   type="text" />
+<div id="searchPanel">
+  <div *ngFor="let user of searchUser.listUsersMatch">
+
+    <div class="container" [routerLink]="'/user/' + user.username">
+      
+      <div class="col-4 searchAvatar">
+
+        <img *ngIf="!user.avatar" src="https://i.pinimg.com/474x/5d/cf/02/5dcf02265a260bb0902c1ec504d1743b.jpg"
+          class="avatarImageToolbar " alt="">
+        <img *ngIf="user.avatar" [src]="user.avatar" class="avatarImageToolbar  " alt="">
+      </div>
+      <div class="col-8 searchText">
+        <span class="nameSurname">{{user.name}} {{user.surname}}</span>
+        <br>
+        <span class="username">@{{user.username}}</span>
+
+      </div>
+    
+    </div>
+  </div>
+</div>
+<!--
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>State</mat-label>
+    <input matInput
+           aria-label="State"
+           [matAutocomplete]="auto"
+           [formControl]="stateCtrl">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+        <img class="example-option-img" aria-hidden [src]="state.flag" height="25">
+        <span>{{state.name}}</span> |
+        <small>Population: {{state.population}}</small>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <br>
+
+</form>
+-->

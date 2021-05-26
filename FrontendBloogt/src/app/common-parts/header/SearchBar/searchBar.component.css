@@ -1,0 +1,49 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-option-img {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+[dir='rtl'] .example-option-img {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+
+#searchPanel{
+  position:fixed;
+  width:250px;
+  background-color: white;
+  color:black;
+  
+}
+
+.searchAvatar img{
+  width:50px;
+  height:50px;
+}
+
+#searchPanel .container{
+  padding:0px;
+}
+
+.avatarImageToolbar{
+  display:flex;
+}
+
+.avatarImageToolbar{
+  display:flex;
+}
+
+.searchAvatar, .searchText{
+  padding:0px;
+}

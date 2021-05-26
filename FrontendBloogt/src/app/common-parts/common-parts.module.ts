@@ -14,10 +14,11 @@ import { LoginComponent } from '../login/component/login/login.component';
 import { LoginRoutingModule } from '../login/login-routing.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DemoMaterialModule } from '../material.module';
+import { SearchBarComponent } from './header/SearchBar/searchBar.component';
 
 @NgModule({
   declarations: [
-    
+    SearchBarComponent,
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
@@ -47,6 +48,6 @@ import { DemoMaterialModule } from '../material.module';
     TimeAgo
   ],
   providers: [],
-  bootstrap: [ FooterComponent,  SidebarComponent, HeaderComponent, PostBarComponent, LeftBarComponent  ]
+  bootstrap: [ FooterComponent,  SidebarComponent, HeaderComponent, PostBarComponent, LeftBarComponent,SearchBarComponent  ]
 })
 export class CommonPartsModule { }

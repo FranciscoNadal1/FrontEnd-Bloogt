@@ -85,4 +85,18 @@ export class UserService {
   }
 
 
+  public getUserStatistics(username: string): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    let url : string =  restURL.getUserStatistics;
+    let newstr = url.replace("[[username]]", username);
+
+    let options = { headers: headers };
+
+    const data = {    };
+
+    return this.http.get<any>(newstr, data);
+  }
+
 }

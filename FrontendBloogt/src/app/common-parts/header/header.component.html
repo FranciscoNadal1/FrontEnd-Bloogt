@@ -14,7 +14,32 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <app-search-bar></app-search-bar>
+      <!--
+      ddd
+      <div *ngFor="let user of searchUser.listUsersMatch">
+{{user.id}}
+      </div>
+      
+
+
+<mat-form-field class="example-full-width">
+  <mat-label>State</mat-label>
+  <input matInput
+         aria-label="State"
+         [matAutocomplete]="auto">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let state of searchUser | async" [value]="state.username">
+      <img class="example-option-img" aria-hidden [src]="state.avatar" height="25">
+      <span>{{state.id}}</span> |
+      <small>Population: {{state.username}}</small>
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+-->
+<!--
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+-->
     </form>
 
   
