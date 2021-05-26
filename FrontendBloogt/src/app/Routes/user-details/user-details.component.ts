@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { UserService } from "../../bloogt-rest/services/user.service";
 
@@ -23,7 +23,7 @@ export class UserDetailsComponent implements OnInit {
   statusText: string;
 
   public user: any = {   };
-  public postsOfUser: any = {   };
+ // public postsOfUser: any = {   };
   public userFollowing: any = {   };
   public userFollowed: any = {   };
   public username: string;
@@ -33,20 +33,34 @@ export class UserDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private userservice: UserService,
-    private postservice: PostService,
+  //  private postservice: PostService,
     private userToken: UserTokenService,
-    private chatService: ChatService
-    ) { }
+    private chatService: ChatService,
+    private router: Router
+    ) { 
 
 
-  ngOnInit(): void {
-this.showSidebar = false;
+      router.events.subscribe((val) => {
+        try {
+          this.ngOnInit();
+        } finally {
+        }
+      });
+    }
+
+
+  ngOnInit(): void { 
+console.log("aaaaaaaaaaaaaaaa")
+    this.username="";
+    this.showSidebar = false;
     this.username = this.route.snapshot.params.username;
 
 
 
     this.userservice.getUserDetailsByUsername(this.username).subscribe(user => (this.user = user));
+    /*  
     this.postservice.getPostByUsername(this.username).subscribe(postsOfUser => (this.postsOfUser = postsOfUser));
+  */
     
 /*
     this.subscription = timer(0, 1000).pipe(
@@ -54,7 +68,7 @@ this.showSidebar = false;
     ).subscribe(postsOfUser => this.postsOfUser = postsOfUser);
 */
     
-this.userFollowing = this.userservice.getFollowingUsers(this.username).subscribe();
+//this.userFollowing = this.userservice.getFollowingUsers(this.username).subscribe();
 /*
     this.subscription = timer(0, 100000).pipe(
       switchMap(() => this.userservice.getFollowingUsers(this.username))

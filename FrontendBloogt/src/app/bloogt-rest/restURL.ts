@@ -85,3 +85,4 @@ export const getUserStatistics = baseURL + "/api/charts/user/statistics/[[userna
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////                     SEARCH
 export const searchUser = baseURL + "/api/search/user/[[username]]/5";
+export const searchHashtag = baseURL + "/api/search/hashtag/[[hashtag]]/5";

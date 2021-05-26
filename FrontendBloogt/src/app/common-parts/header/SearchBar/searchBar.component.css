@@ -47,3 +47,23 @@
 .searchAvatar, .searchText{
   padding:0px;
 }
+
+
+.headerSearchList{
+  padding:10px;
+  border:1px solid black;
+}
+
+.hashtagPart .searchText{
+  color:grey;
+  padding:10px;
+  padding-left:20px;
+}
+.userPart .searchText{
+  padding:10px;
+  padding-left:20px;
+}
+.userPart .container{
+  border:1px red;
+  margin:10px;
+}

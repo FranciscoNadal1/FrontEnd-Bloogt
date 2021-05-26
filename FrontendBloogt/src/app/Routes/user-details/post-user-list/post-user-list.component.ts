@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from 'src/app/bloogt-rest/services/post.service';
 import { UserService } from 'src/app/bloogt-rest/services/user.service';
 import { UserTokenService } from 'src/app/login/service/user-token.service';
@@ -17,9 +17,19 @@ export class PostUserListComponent implements OnInit {
     private route: ActivatedRoute,
     private userservice: UserService,
     private postservice: PostService,
-    private userToken: UserTokenService) { }
+    private userToken: UserTokenService,
+    private router: Router) {
+
+      router.events.subscribe((val) => {
+        try {
+          this.ngOnInit();
+        } finally {
+        }
+      });
+     }
 
   ngOnInit(): void {
+    
 
     this.username = this.route.snapshot.params.username;
     if(this.getMenuItem() === 'postList')

@@ -52,11 +52,9 @@ export class PostListComponent implements OnInit {
     });
 
     router.events.subscribe((val) => {
-      //this.loading = true
       try {
         this.ngOnInit();
       } finally {
-        //this.loading = false
       }
     });
 
@@ -92,7 +90,7 @@ export class PostListComponent implements OnInit {
     this.loadingPostList = true
     if (this.route.snapshot.params.hashtagName === undefined) {
 
-      console.log(this.route.snapshot.params.hashtagName)
+      
       this.getQuickPostsOfFollowing();
       this.getReactionsOfPosts();
       this.loadingPostList = false

@@ -25,6 +25,19 @@ export class SearchService {
     return this.http.get<any>(newstr, options);
   }
 
+  public searchHashtag(hashtag: string): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    let url : string =  restURL.searchHashtag;
+    let newstr = url.replace("[[hashtag]]", String(hashtag));
+
+    let options = { headers: headers };
+
+
+    return this.http.get<any>(newstr, options);
+  }
 
 
   constructor(private http: HttpClient, private tokenStorage: TokenStorageService) { }

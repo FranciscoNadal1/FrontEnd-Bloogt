@@ -29,13 +29,12 @@ export class PostDetailsComponent implements OnInit {
     private router: Router
     ) {
 
-      router.events.subscribe((val) => {
-        this.ngOnInit();
-    });
+
 
     }
 
   ngOnInit() {
+    
     this.getPostInfo();
     this.getComments();
     this.commentservice.sortComments(this.comments, "older");

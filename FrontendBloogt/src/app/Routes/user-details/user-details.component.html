@@ -1,5 +1,5 @@
 
-<app-header-user-details></app-header-user-details>
+<app-header-user-details [username]="username"></app-header-user-details>
 <!--
 <div class="card bg-light">
     <div class="card-header">Profile</div>
@@ -31,15 +31,6 @@
     <div class="row profile ">
 		<div class="col-md-2 ">
 			<div class="profile-sidebar ">
-				<!-- SIDEBAR USERPIC -->
-				<!--
-				<div class="profile-userpic">
-					<img *ngIf="!user.avatar" src="https://i.pinimg.com/474x/5d/cf/02/5dcf02265a260bb0902c1ec504d1743b.jpg" class="img-responsive" alt="">
-					<img *ngIf="user.avatar" [src]="user.avatar" class="img-responsive" alt="">
-				</div>
-				-->
-				<!-- END SIDEBAR USERPIC -->
-				<!-- SIDEBAR USER TITLE -->
 				<div class="profile-usertitle">
 					<div class="profile-usertitle-name">
 						{{user.username}}
@@ -48,15 +39,11 @@
 						{{user.email}}
 					</div>
 				</div>
-				<!-- END SIDEBAR USER TITLE -->
-				<!-- SIDEBAR BUTTONS -->
 				<div *ngIf="!getLoggedUsername()" class="profile-userbuttons">
 					<button (click)="followUser()" type="button" class="btn btn-success btn-sm">Follow</button>
 					<button (click)="createChat()" type="button" class="btn btn-danger btn-sm">
 						<i class="glyphicon glyphicon-envelope"></i></button>
 				</div>
-				<!-- END SIDEBAR BUTTONS -->
-				<!-- SIDEBAR MENU -->
 				<div class="profile-usermenu">
 					<ul class="nav">
 						Posts
@@ -127,7 +114,6 @@
 						</li>
 					</ul>
 				</div>
-				<!-- END MENU -->
 			</div>
 		</div>
 		
