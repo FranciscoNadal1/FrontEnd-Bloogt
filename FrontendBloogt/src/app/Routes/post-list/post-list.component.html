@@ -7,6 +7,8 @@
     
         <app-post-bar></app-post-bar>
 
+        <app-common-post-list [post]="post" [loadingPostList]="loadingPostList"></app-common-post-list>
+<!--
         <div *ngIf="!loadingPostList">
             <form [formGroup]="dynamicForm">
 
@@ -23,7 +25,13 @@
                                             class="rounded-circle" alt="">
                                     </div>
                                     <div class="ml-2">
-                                        <div class="h5 m-0"><a
+                                        <div class="h5 m-0">
+                                            <div *ngIf="item.isShared == true">
+                                                <span *ngIf="item.sharedBy.username !== username">Shared by @{{item.sharedBy.username}}</span>
+                                                <span *ngIf="item.sharedBy.username === username">Shared by yourself</span>
+                                            
+                                            </div>
+                                            <a
                                                 [routerLink]="'/user/' + item.createdBy.username">@{{item.createdBy.username}}</a>
                                         </div>
                                         <div class="h7 text-muted">{{item.createdBy.name}} {{item.createdBy.surname}}</div>
@@ -106,12 +114,7 @@
                                 <span class="[ glyphicon glyphicon-share-alt ]"></span>
                             </button>
 
-
-
-                            <!--
-                        <div class="input-placeholder">Add a comment...</div>
-    -->
-
+                            
                         </div>
 
                         <mat-divider></mat-divider>
@@ -246,9 +249,8 @@
 
             </form>
         </div>
+    -->
 
-        <mat-progress-spinner *ngIf="loadingPostList" class="example-margin" [color]="primary" [mode]="indeterminate">
-        </mat-progress-spinner>
 
     </div>
 </div>

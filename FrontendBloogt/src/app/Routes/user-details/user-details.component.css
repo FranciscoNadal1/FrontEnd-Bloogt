@@ -27,18 +27,24 @@
   }
   
   .profile-usertitle {
-    text-align: center;
+   /* text-align: center;*/
     margin-top: 20px;
+    margin-left:10px;
   }
   
-  .profile-usertitle-name {
+  .profile-usertitle-username {
     color: #5a7391;
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 7px;
   }
-  
-  .profile-usertitle-job {
+  .profile-usertitle-name {
+    color: #5a7391;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 7px;
+  }
+  .profile-usertitle-email {
     text-transform: uppercase;
     color: #5b9bd1;
     font-size: 12px;
@@ -46,6 +52,12 @@
     margin-bottom: 15px;
   }
   
+  .profile-usertitle-bio {
+    color: white;
+    font-size: 14px;
+    font-weight: 200;
+    margin-bottom: 15px;
+  }
   .profile-userbuttons {
     text-align: center;
     margin-top: 10px;
@@ -117,4 +129,8 @@
   .container + .user-details{
     width:100% !important;
     margin:0 px;
+  }
+
+  .userDetailsContent{
+    margin:20px;
   }

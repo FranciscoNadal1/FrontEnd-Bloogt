@@ -156,6 +156,33 @@ export class PostService {
 
     );
   }
+
+  public sharePost(id: number): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.tokenStorage.getToken()
+    });
+
+    let url: string = restURL.sharePostById;
+    let newstr = url.replace("[[id]]", String(id));
+
+    let options = { headers: headers };
+
+    return this.http.put<any>(newstr, null, options).pipe(
+      map((response: any) => response.cliente),
+      catchError(e => {
+        if (e.status != 'OK') {
+          return throwError(e);
+        }
+       // console.error(e.error.mensaje);
+        return throwError(e);
+      })
+
+    );
+  }
+
+
+
   public dislikePost(id: number): Observable<any> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',

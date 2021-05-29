@@ -60,7 +60,7 @@ export class PostListComponent implements OnInit {
 
   }
 
-
+/*
   showHideCommentsOfPost(elem) {
     if(this.commentsOfPost.get(elem)!==undefined){
       
@@ -79,7 +79,7 @@ export class PostListComponent implements OnInit {
 
 
   }
-
+*/
 
   ngOnInit() {
 
@@ -102,7 +102,7 @@ export class PostListComponent implements OnInit {
 
 
   }
-
+/*
   onSubmit(postId) {
 
 
@@ -113,11 +113,13 @@ export class PostListComponent implements OnInit {
       commentForm: ['', Validators.required]
     });
   }
+  */
   /////////////////
 
 
 
   //////////////////
+
   PostReactionTrueOrFalse(id: number): boolean {
     return this.mapPostReactions.get(Number(id));
   }
@@ -138,9 +140,8 @@ export class PostListComponent implements OnInit {
   }
 
   getQuickPosts() {
-    /*
-    this.postservice.getAllQuickPosts().subscribe(post => (this.post = post));
-*/
+    
+
     this.postservice.getAllQuickPosts()
       .pipe(
         takeUntil(this.ngUnsubscribe),
@@ -168,7 +169,7 @@ export class PostListComponent implements OnInit {
       .subscribe(post => (this.post = post));
   }
 
-
+/*
   thumbUpPost(id: number) {
     this.getReactionsOfPosts();
 
@@ -209,8 +210,8 @@ export class PostListComponent implements OnInit {
       });
 
   }
-
-
+*/
+/*
   thumbUpComment(postId, id){
     this.commentservice.likeComment(id).subscribe(() => {
 
@@ -243,9 +244,9 @@ export class PostListComponent implements OnInit {
 
   }  
 
+*/
 
-
-
+/*
   postComment(message, postId) {
 
     var message: any = message;
@@ -288,4 +289,5 @@ export class PostListComponent implements OnInit {
       }
     );
   }
+*/
 }

@@ -15,10 +15,12 @@ import { LoginRoutingModule } from '../login/login-routing.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DemoMaterialModule } from '../material.module';
 import { SearchBarComponent } from './header/SearchBar/searchBar.component';
+import { CommonPostListComponent } from './post-list/common-post-list.component';
 
 @NgModule({
   declarations: [
     SearchBarComponent,
+    CommonPostListComponent,
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
@@ -26,7 +28,7 @@ import { SearchBarComponent } from './header/SearchBar/searchBar.component';
     LeftBarComponent,
     CutHtmlText,
     HashtagLinkification,
-    TimeAgo,
+    TimeAgo
   ],
   imports: [
     DemoMaterialModule,
@@ -44,10 +46,11 @@ import { SearchBarComponent } from './header/SearchBar/searchBar.component';
     SidebarComponent,
     LeftBarComponent,
     CutHtmlText,
+    CommonPostListComponent,
     HashtagLinkification,
     TimeAgo
   ],
   providers: [],
-  bootstrap: [ FooterComponent,  SidebarComponent, HeaderComponent, PostBarComponent, LeftBarComponent,SearchBarComponent  ]
+  bootstrap: [ FooterComponent,  SidebarComponent, HeaderComponent, PostBarComponent, LeftBarComponent, SearchBarComponent]
 })
 export class CommonPartsModule { }

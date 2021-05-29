@@ -32,11 +32,17 @@
 		<div class="col-md-2 ">
 			<div class="profile-sidebar ">
 				<div class="profile-usertitle">
-					<div class="profile-usertitle-name">
-						{{user.username}}
+					<div class="profile-usertitle-username">
+						@{{user.username}}
 					</div>
-					<div class="profile-usertitle-job">
+					<div class="profile-usertitle-name">
+						{{user.name}} {{user.surname}}
+					</div>
+					<div class="profile-usertitle-email">
 						{{user.email}}
+					</div>					
+					<div class="profile-usertitle-bio">
+						{{user.bio}}
 					</div>
 				</div>
 				<div *ngIf="!getLoggedUsername()" class="profile-userbuttons">
@@ -118,17 +124,19 @@
 		</div>
 		
 		<div class="col-md-10">
-			<app-post-user-list *ngIf="getMenuItem() === 'postList'"></app-post-user-list>
-			<app-post-user-list *ngIf="getMenuItem() === 'postsLiked'"></app-post-user-list>
-			<app-post-user-list *ngIf="getMenuItem() === 'postsDisliked'"></app-post-user-list>
+			<div class="userDetailsContent">
+				<app-post-user-list *ngIf="getMenuItem() === 'postList'"></app-post-user-list>
+				<app-post-user-list *ngIf="getMenuItem() === 'postsLiked'"></app-post-user-list>
+				<app-post-user-list *ngIf="getMenuItem() === 'postsDisliked'"></app-post-user-list>
 
-			<app-comment-user-list *ngIf="getMenuItem() === 'commentList'"></app-comment-user-list>
-			<app-comment-user-list *ngIf="getMenuItem() === 'commentsLiked'"></app-comment-user-list>
-			<app-comment-user-list *ngIf="getMenuItem() === 'commentsDisliked'"></app-comment-user-list>
+				<app-comment-user-list *ngIf="getMenuItem() === 'commentList'"></app-comment-user-list>
+				<app-comment-user-list *ngIf="getMenuItem() === 'commentsLiked'"></app-comment-user-list>
+				<app-comment-user-list *ngIf="getMenuItem() === 'commentsDisliked'"></app-comment-user-list>
 
-			
-			<app-following *ngIf="getMenuItem() === 'following'"></app-following>
-			<app-followers *ngIf="getMenuItem() === 'followers'"></app-followers>
+				
+				<app-following *ngIf="getMenuItem() === 'following'"></app-following>
+				<app-followers *ngIf="getMenuItem() === 'followers'"></app-followers>
+			</div>
 		</div>
 
 	</div>

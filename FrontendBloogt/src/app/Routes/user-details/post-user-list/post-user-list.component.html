@@ -1,21 +1,13 @@
+
+
+
+
 <div *ngIf="getMenuItem() === 'postList'" class="profile-content">
-    <div *ngIf="postsOfUser.posts; let foreach">
-    <div class="card" *ngFor="let post of foreach">
-        <div *ngIf="post; let item">
-            <ng-container *ngTemplateOutlet="showPosts ; context: {$implicit: item}"></ng-container>
-         </div>
-    </div>
-</div>
+    <app-common-post-list [post]="postsOfUser.posts" ></app-common-post-list>    
 </div>
 
 <div *ngIf="getMenuItem() === 'postsLiked' || getMenuItem() === 'postsDisliked'" class="profile-content">
-    <div *ngIf="postsOfUser; let foreach">
-        <div class="card" *ngFor="let post of foreach">
-            <div *ngIf="post.posts; let item">
-                <ng-container *ngTemplateOutlet="showPosts ; context: {$implicit: item}"></ng-container>
-            </div>
-        </div>
-    </div>    
+    <app-common-post-list [post]="postsOfUser" ></app-common-post-list>
 </div>
 
 

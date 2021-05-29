@@ -10,11 +10,11 @@
     margin-top:-20px;
 }
 .profile .profile-header .profile-header-cover {
+/*
     background: url(https://bootdey.com/img/Content/bg1.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 200px;
+    */
+
+    height: 300px;
     position: relative;
 }
 @media (max-width: 991.98px) {

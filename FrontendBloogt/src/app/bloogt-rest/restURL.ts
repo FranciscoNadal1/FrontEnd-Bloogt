@@ -28,9 +28,12 @@ export const getAllQuickPostsOfFollowing = baseURL + "/api/posts/getAll/followin
 export const getPostById = baseURL + "/api/posts/getById/[[id]]";
 export const getPostByUsername = baseURL + "/api/user/getPostsByUsername/[[username]]";
 export const createNewPost = baseURL + "/api/posts/new";
-export const likePostById = baseURL + "/api/reaction/post/[[id]]/like";
-export const dislikePostById = baseURL + "/api/reaction/post/[[id]]/dislike";
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////                     REACTIONS
+export const likePostById = baseURL + "/api/reaction/post/[[id]]/like";
+export const sharePostById = baseURL + "/api/posts/sharePost/[[id]]";
+export const dislikePostById = baseURL + "/api/reaction/post/[[id]]/dislike";
 export const getPostReactionsOfUser = baseURL + "/api/reaction/posts/user/[[username]]?reaction=[[reaction]]";
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////                     CATEGORY
@@ -40,8 +43,6 @@ export const getAllCategories = baseURL + "/api/category/getAllCategories";
 export const getAllHashtags = baseURL + "/api/hashtags/getAllHashtags";
 export const getAllPostsOfHashtag = baseURL + "/api/hashtags/getPostsOfHashtagByName/[[hashtag]]";
 export const getLastTrendingHashtag = baseURL + "/api/trending/trendingLastHour/0/10";
-
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////                     COMMENTS

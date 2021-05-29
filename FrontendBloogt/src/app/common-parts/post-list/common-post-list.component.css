@@ -1,0 +1,115 @@
+.gedf-main {
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+.gedf-card {
+    margin-bottom: 2.77rem;
+}
+
+.card-footer > .btn {
+    float: left;
+    margin-right: 8px;
+}
+.card-footer {
+    font-size: 14px;
+    font-weight: 700;
+    min-height: 54px;
+}
+.card-footer {
+    background-color: rgb(255, 255, 255);
+    border-width: 0px; 
+}
+.card-footer .input-placeholder {
+    display: block;
+    margin-left: 198px;
+    color: rgb(153, 153, 153);
+    font-size: 12px;
+    font-weight: 400;
+    padding: 8px 6px 7px;
+    border: 1px solid rgb(217, 217, 217);
+    border-radius: 2px;
+    box-shadow: rgb(0 0 0 / 5%) 0px 1px 0px 0px;
+}
+
+.card-footer .glyphicon{
+    font-size: 20px;
+}
+
+
+.LikedPost{
+    color:green !important;
+}
+.DislikedPost{
+    color:red !important;
+}
+.SharedPost{
+    color:blue !important;
+}
+
+.imageContainer{
+    display:table;
+}
+
+.imageContainer img{
+    width:100%;
+    height:200px;
+    position: relative;
+    margin: 0 auto;
+    display:table;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.imageUpload{
+    padding:0px;
+    margin:0px;
+}
+
+.commentHover .avatar{
+    width:50px;
+}
+.commentHover .comment{
+    width:100%;
+}
+.commentHover .avatar img{
+    width:100%;
+}
+
+.commentBox{
+    display:flex;
+}
+.formFieldCommentTextarea{
+    width:100%;
+}
+
+.image-circle{
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+
+.commentHover{
+    padding-top:20px;
+    padding-bottom:10px;
+}
+
+.commentHover .comment{
+    
+    margin-left:20px;
+    margin-right:20px;
+}
+
+.comment-card{
+    background-color:#f5f5f5;
+    margin:10px;
+    border:1px solid black;
+}
+
+button{
+    color:#ccc;
+}
+
+.postList .card, .postList .card-footer  {
+    border-radius:30px;
+}
+

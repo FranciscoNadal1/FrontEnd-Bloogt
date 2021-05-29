@@ -1,10 +1,11 @@
 <div class="profile">
 <div class="profile-header">
-    <div class="profile-header-cover"></div>
+    <div class="profile-header-cover" [style]="'background: url('+ userStatistics.background +');background-size: cover;    background-position: center;    background-repeat: no-repeat;'"></div>
     <div class="profile-header-content text-white bg-dark">
         <div class="profile-header-img"> 
           <img *ngIf="!userStatistics.avatar" src="https://i.pinimg.com/474x/5d/cf/02/5dcf02265a260bb0902c1ec504d1743b.jpg"
             class="avatarImageToolbar" alt="">
+            
           <img *ngIf="userStatistics.avatar" [src]="userStatistics.avatar" class="avatarImageToolbar" alt="">
         
         

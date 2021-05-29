@@ -50,7 +50,7 @@ export class UserDetailsComponent implements OnInit {
 
 
   ngOnInit(): void { 
-console.log("aaaaaaaaaaaaaaaa")
+    console.log("aaaaaaaaaaaaaaaa")
     this.username="";
     this.showSidebar = false;
     this.username = this.route.snapshot.params.username;
@@ -58,6 +58,11 @@ console.log("aaaaaaaaaaaaaaaa")
 
 
     this.userservice.getUserDetailsByUsername(this.username).subscribe(user => (this.user = user));
+
+
+
+
+
     /*  
     this.postservice.getPostByUsername(this.username).subscribe(postsOfUser => (this.postsOfUser = postsOfUser));
   */
@@ -127,7 +132,7 @@ console.log("aaaaaaaaaaaaaaaa")
     this.userFollowing = this.userservice.getFollowingUsers(this.username).subscribe();
     console.log(this.userFollowing);
     */
-    console.log(this.userFollowing);
+    //console.log(this.userFollowing);
     
     /*this.userFollowing.
     for(let user of this.userFollowing){
