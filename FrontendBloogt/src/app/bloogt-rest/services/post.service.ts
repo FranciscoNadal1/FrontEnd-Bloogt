@@ -181,6 +181,30 @@ export class PostService {
     );
   }
 
+  public unsharePost(id: number): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.tokenStorage.getToken()
+    });
+
+    let url: string = restURL.unsharePostById;
+    let newstr = url.replace("[[id]]", String(id));
+
+    let options = { headers: headers };
+
+    return this.http.delete<any>(newstr,  options).pipe(
+      map((response: any) => response.cliente),
+      catchError(e => {
+        if (e.status != 'OK') {
+          return throwError(e);
+        }
+       // console.error(e.error.mensaje);
+        return throwError(e);
+      })
+
+    );
+  }
+
 
 
   public dislikePost(id: number): Observable<any> {
@@ -195,6 +219,31 @@ export class PostService {
     let options = { headers: headers };
 
     return this.http.put<any>(newstr, null, options).pipe(
+      map((response: any) => response.cliente),
+      catchError(e => {
+        if (e.status != 'OK') {
+          return throwError(e);
+        }
+      //  console.error(e.error.mensaje);
+        return throwError(e);
+      })
+
+    );
+  }
+
+  
+  public deletePostReaction(id: number): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.tokenStorage.getToken()
+    });
+
+    let url: string = restURL.deletePostReaction;
+    let newstr = url.replace("[[id]]", String(id));
+
+    let options = { headers: headers };
+
+    return this.http.delete<any>(newstr, options).pipe(
       map((response: any) => response.cliente),
       catchError(e => {
         if (e.status != 'OK') {

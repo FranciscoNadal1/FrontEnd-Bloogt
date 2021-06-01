@@ -16,10 +16,10 @@ import { PostService } from '../../bloogt-rest/services/post.service';
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit {
-
+/*
   myFormGroup: FormGroup;
   dynamicForm: FormGroup;
-
+*/
   commentsOfPost: Map<number, any> = new Map<number, any>();
 
   private ngUnsubscribe = new Subject();
@@ -46,11 +46,11 @@ export class PostListComponent implements OnInit {
     private postservice: PostService,
     public userToken: UserTokenService,
     private router: Router) {
-
+/*
     this.dynamicForm = this.formBuilder.group({
       commentForm: ['', Validators.required]
     });
-
+*/
     router.events.subscribe((val) => {
       try {
         this.ngOnInit();

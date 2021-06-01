@@ -274,27 +274,50 @@ btn btn-default'" type="button" class="btn btn-default">
     </div>
 
     <div class="card-footer  bg-dark">
-        <button  mat-button color="primary" (click)="thumbUpPost(item.id)" [className]="PostReactionTrueOrFalse(item.id) === true ? '
-btn btn-default LikedPost' : '
-btn btn-default'" type="button" class="btn btn-default">
+        
+        
+        
+        
+        
+        <button   *ngIf="PostReactionTrueOrFalse(item.id) !== true" mat-button (click)="thumbUpPost(item.id)"  type="button" class="btn btn-default">
             <i class="glyphicon glyphicon glyphicon-thumbs-up"></i>
             <span>{{item.positiveReactions}}</span>
         </button>
-        <button mat-button (click)="thumbDownPost(item.id)" [className]="PostReactionTrueOrFalse(item.id) === false ? '
-btn btn-default DislikedPost' : '
-btn btn-default'" type="button" class="btn btn-default">
+
+        <button  *ngIf="PostReactionTrueOrFalse(item.id) === true"  mat-button (click)="deletePostReaction(item.id, true)" type="button" class="btn btn-default LikedPost">
+            <i class="glyphicon glyphicon glyphicon-thumbs-up"></i>
+            <span>{{item.positiveReactions}}</span>
+        </button>
+
+
+
+        <button *ngIf="PostReactionTrueOrFalse(item.id) !== false" mat-button (click)="thumbDownPost(item.id)"  type="button" class="btn btn-default">
             <i class="glyphicon glyphicon glyphicon-thumbs-down"></i>
             <span>{{item.negativeReactions}}</span>
         </button>
+
+        <button *ngIf="PostReactionTrueOrFalse(item.id) === false" mat-button (click)="deletePostReaction(item.id, false)" type="button" class="btn btn-default DislikedPost">
+            <i class="glyphicon glyphicon glyphicon-thumbs-down"></i>
+            <span>{{item.negativeReactions}}</span>
+        </button>
+
+
+
+
+
+
+
         <button (click)="showHideCommentsOfPost(item.id)" mat-button type="button"
             class="btn btn-default">
             <i class="glyphicon glyphicon glyphicon-comment"></i>
             <span>{{item.commentaryCount}}</span>
         </button>
-        <button mat-button type="button" class="btn btn-default">
-            <span *ngIf="item.isShared === true && item.sharedBy.username === username"  class="[ SharedPost glyphicon glyphicon-share-alt ]"></span>
-            <span *ngIf="item.isShared !== true" (click)="sharePost(item.id)" class="[ glyphicon glyphicon-share-alt ]"></span>
-        </button>                    
+        <button mat-button type="button" class="btn btn-default" *ngIf="item.isShared === true && item.sharedBy.username === username"  (click)="unsharePost(item.id)">
+            <span  class="[ SharedPost glyphicon glyphicon-share-alt ]"></span>
+        </button>       
+        <button mat-button type="button" class="btn btn-default"*ngIf="item.isShared !== true" (click)="sharePost(item.id)">
+            <span  class="[ glyphicon glyphicon-share-alt ]"></span>
+        </button>               
     </div>
 
     <mat-divider></mat-divider>
@@ -315,7 +338,9 @@ btn btn-default'" type="button" class="btn btn-default">
                     <div class="comment float-right">
                         <mat-form-field class="formFieldCommentTextarea">
                             <mat-label class="text-secondary">Add comment:</mat-label>
-                            <textarea formControlName="commentForm" name="comment"
+                            <textarea 
+                            (keyup)="changedContentComment($event.target.value)" (focusin)="changedContentComment($event.target.value)"
+                            formControlName="commentForm" name="comment"
                                 [id]="'CommentTextArea-'+ i" class="postTextArea" matInput
                                 cdkTextareaAutosize #autosize="cdkTextareaAutosize"
                                 cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>

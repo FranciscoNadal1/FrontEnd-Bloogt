@@ -18,12 +18,12 @@ import { PostService } from '../../bloogt-rest/services/post.service';
 })
 export class CommonPostListComponent implements OnInit {
 
-  myFormGroup: FormGroup;
   dynamicForm: FormGroup;
 
   commentsOfPost: Map<number, any> = new Map<number, any>();
 
   private ngUnsubscribe = new Subject();
+  private commentContent: any;
 
 
   public user: any = {};
@@ -60,8 +60,13 @@ export class CommonPostListComponent implements OnInit {
     });
      }
 
+     changedContentComment(content: string) {  
+      this.commentContent = content;
+    }
+
 
      showHideCommentsOfPost(elem) {
+      this.commentContent = "";
       if(this.commentsOfPost.get(elem)!==undefined){
         
         this.commentsOfPost.clear();
@@ -105,13 +110,16 @@ export class CommonPostListComponent implements OnInit {
   
     onSubmit(postId) {
   
+      
   
-      this.postComment(this.dynamicForm.value.commentForm, postId);
+      this.postComment(this.commentContent, postId);
   
-      this.dynamicForm.value.commentForm = null;
+     // this.commentContent = null;
+      /*
       this.dynamicForm = this.formBuilder.group({
         commentForm: ['', Validators.required]
       });
+      */
     }
     /////////////////
   
@@ -137,47 +145,36 @@ export class CommonPostListComponent implements OnInit {
           console.log(error);
         });
     }
-  /*
-    getQuickPosts() {
 
-      this.postservice.getAllQuickPosts()
-        .pipe(
-          takeUntil(this.ngUnsubscribe),
-          finalize(() => {
-            this.loadingPostList = false
-          }))
-        .subscribe(post => (this.post = post));
-  
-    }
-  
-    getPostsOfHashtag(hashtag: string) {
-      this.postservice.getAllPostsOfHashtag(hashtag)
-        .pipe(
-          takeUntil(this.ngUnsubscribe),
-          finalize(() => {
-            this.loadingPostList = false
-          }))
-        .subscribe(postHash => (this.post = postHash.posts));
-  
-    }
-  
-    getQuickPostsOfFollowing() {
-      this.postservice.getAllQuickPostsOfFollowing()
-        .pipe(takeUntil(this.ngUnsubscribe))
-        .subscribe(post => (this.post = post));
-    }
-  
-  */
     sharePost(id: number) {
      // this.getReactionsOfPosts();
   
       this.postservice.sharePost(id).subscribe(() => {
+
         
-        /*
         this.post.forEach(element => {
-          
+          /*
+          element.isShared = true;
+
+          console.log("this Id = " + id);
+          console.log("element Id = " + element.id);
+          console.log("this.username- " + this.username);
+        
+          console.log(element);
+          */
           if (element.id === id) {
+
+
+
+           // console.log(element);
             element.isShared = true;
+            const data = {
+              "username": this.username
+            };
+            element.sharedBy = data
+            
+            element.sharedAt = Date.now();
+            //element.sharedBy.username = this.username;
   
            // if (this.mapPostReactions.get(Number(id)) === false)
   
@@ -186,14 +183,36 @@ export class CommonPostListComponent implements OnInit {
 
 
         });
-        */
+        
+       
+        this.getReactionsOfPosts();
       },
         (error) => {
           console.log(error);
         });
   
     }
+    unsharePost(id: number) {
+   
+       this.postservice.unsharePost(id).subscribe(() => {
+ 
+         
+         this.post.forEach(element => {
 
+           if (element.id === id) {
+             element.isShared = false;
+             element.sharedBy = null
+           } 
+         });
+         
+        
+         this.getReactionsOfPosts();
+       },
+         (error) => {
+           console.log(error);
+         });
+   
+     }
 
 
     thumbUpPost(id: number) {
@@ -207,15 +226,41 @@ export class CommonPostListComponent implements OnInit {
             if (this.mapPostReactions.get(Number(id)) === false)
               element.negativeReactions--;
   
-            this.getReactionsOfPosts();
           }
         });
+        this.getReactionsOfPosts();
       },
         (error) => {
           console.log(error);
         });
   
     }
+
+    deletePostReaction(id: number, trueOrFalse: boolean) {
+      this.getReactionsOfPosts();
+  
+      this.postservice.deletePostReaction(id).subscribe(() => {
+        this.post.forEach(element => {
+          if (element.id === id) {
+            if(trueOrFalse === true)
+              element.positiveReactions--;
+              this.mapPostReactions.clear();
+  //          if (this.mapPostReactions.get(Number(id)) === false)
+  
+            if(trueOrFalse === false)
+              element.negativeReactions--;
+  
+          }
+        });
+        this.getReactionsOfPosts();
+      },
+        (error) => {
+          console.log(error);
+        });
+  
+    }
+
+
     thumbDownPost(id) {
       this.getReactionsOfPosts();
   
@@ -227,9 +272,10 @@ export class CommonPostListComponent implements OnInit {
             if (this.mapPostReactions.get(Number(id)) === true)
               element.positiveReactions--;
   
-            this.getReactionsOfPosts();
           }
         });
+        
+        this.getReactionsOfPosts();
       },
         (error) => {
           console.log(error);

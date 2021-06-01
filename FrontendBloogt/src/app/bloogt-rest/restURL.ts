@@ -32,7 +32,9 @@ export const createNewPost = baseURL + "/api/posts/new";
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////                     REACTIONS
 export const likePostById = baseURL + "/api/reaction/post/[[id]]/like";
+export const deletePostReaction = baseURL + "/api/reaction/post/[[id]]";
 export const sharePostById = baseURL + "/api/posts/sharePost/[[id]]";
+export const unsharePostById = baseURL + "/api/posts/unsharePost/[[id]]";
 export const dislikePostById = baseURL + "/api/reaction/post/[[id]]/dislike";
 export const getPostReactionsOfUser = baseURL + "/api/reaction/posts/user/[[username]]?reaction=[[reaction]]";
 ///////////////////////////////////////////////////////////////////////////////////////////////
